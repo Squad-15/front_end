@@ -4,7 +4,7 @@
     align-items: center;
     height: 100vh;
     background: #f3f4f6;
-    background-image: url('./img/10101411.jpg');
+    background-image: url('/assets/img/10101411.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -55,4 +55,3 @@
     padding: 15px 0px 15px 0px;
     font-size: 13px;
   }
-  

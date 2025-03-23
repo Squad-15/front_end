@@ -1,21 +1,15 @@
-import { useState } from "react";
-import "./Login.css";
-import logo from "./img/Logo Preta (2).png"
-
+"use client";
+import { useLogin } from "../hooks/handleLogin";
+import "/public/styles/login.css";
+import logo from "/public/assets/img/logo.png";
 
 export default function Login() {
-  const [matricula, setMatricula] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = () => {
-    console.log("Matricula:", matricula);
-    console.log("Senha:", password);
-  };
+  const { matricula, setMatricula, password, setPassword, handleLogin } = useLogin();
 
   return (
     <div className="login-container">
       <div className="login-box">
-        <img src={logo}/>
+        <img src={logo.src} alt="Logo" />
         <input
           type="number"
           placeholder="Matrícula"
@@ -31,11 +25,8 @@ export default function Login() {
           className="login-input"
         />
         <div className="checkbox">
-            <input
-            type="checkbox"
-            id="checkbox"
-            />
-            <label>Manter-me conectado</label>
+          <input type="checkbox" id="checkbox" />
+          <label>Manter-me conectado</label>
         </div>
         <button onClick={handleLogin} className="login-button">
           Entrar
