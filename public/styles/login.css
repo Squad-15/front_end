@@ -52,6 +52,9 @@
   }
   .checkbox{
     display: flex;
-    padding: 15px 0px 15px 0px;
+    padding: 15px 0px 15px 5px;
     font-size: 13px;
+  }
+  .checkbox label{
+    margin-left: 5px;
   }
