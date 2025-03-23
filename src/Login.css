@@ -28,6 +28,7 @@
     margin-top: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: 0.2s;
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
@@ -44,6 +45,10 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+  }
+  .login-button:hover{
+    background-color: #6e1210;
+    transition: 0.2s;
   }
   .checkbox{
     display: flex;
