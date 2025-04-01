@@ -1,6 +1,8 @@
+import { CardsAbout } from "../CardsAbout";
+
 export const HeroPrinciple = () => {
     return (
-        <section className="text-gray-600 body-font bg-white dark:bg-slate-900">
+        <section className="body-font bg-white dark:bg-slate-900">
             <div className="container mx-auto flex md:px-24 md:py-10 md:flex-row flex-col-reverse items-center">
                 <div
                     className="lg:flex-grow mt-5 md:mt-0 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -22,6 +24,8 @@ export const HeroPrinciple = () => {
                             Ver Cursos
                         </a>
                     </div>
+
+                    <CardsAbout />
                 </div>
                 <div className="lg:max-w-lg lg:w-full mb-5 md:mb-0 md:w-1/2 w-3/6">
                     <img className="object-cover object-center rounded" alt="hero" src="assets/img/img_hero_1.png" />
