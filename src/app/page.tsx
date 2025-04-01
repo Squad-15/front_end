@@ -1,5 +1,7 @@
+import { HeroPrinciple } from "./components/HeroPrinciple";
+
 export default function Home() {
     return (
-        <h1 className="text-4xl">Página Inicial</h1>
+        <HeroPrinciple />
     );
 }
