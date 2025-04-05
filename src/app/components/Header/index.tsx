@@ -51,7 +51,7 @@ export const Header = () => {
         </div>
 
         <div className="flex items-center max-lg:ml-auto space-x-4">
-          <button type="button" className="bg-primary hover:bg-red-600 px-4 py-2 rounded-md text-white text-[15px] font-medium flex items-center justify-center gap-2">
+          <button type="button" className="bg-primary hover:bg-red-600 px-4 py-2 rounded-full text-white text-[15px] font-medium flex items-center justify-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
               className="cursor-pointer fill-white inline w-4 h-4">
               <circle cx="10" cy="7" r="6" data-original="#000000" />
