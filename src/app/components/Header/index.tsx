@@ -39,13 +39,13 @@ export const Header = () => {
               <Link href="/service" className="hover:text-red-600 font-bold block text-h6">Serviços</Link>
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
-              <Link href="#" className="hover:text-red-600 font-bold block text-h6">Projetos</Link>
+              <Link href="/projects" className="hover:text-red-600 font-bold block text-h6">Projetos</Link>
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
-              <Link href="#" className="hover:text-red-600 font-bold block text-h6">Localização</Link>
+              <Link href="/location" className="hover:text-red-600 font-bold block text-h6">Localização</Link>
             </li>
             <li className="max-lg:border-b max-lg:py-3 px-3">
-              <Link href="#" className="hover:text-red-600 font-bold block text-h6">Contato</Link>
+              <Link href="/contact" className="hover:text-red-600 font-bold block text-h6">Contato</Link>
             </li>
           </ul>
         </div>
