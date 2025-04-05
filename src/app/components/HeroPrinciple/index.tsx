@@ -15,7 +15,7 @@ export const HeroPrinciple = () => {
                     </p>
                     <div className="flex justify-center">
                     <a href="#"
-                        className="inline-flex items-center text-white bg-primary border-0 py-2 px-6 focus:outline-none rounded-full text-h6">
+                        className="inline-flex items-center text-white bg-primary hover:bg-red-600 border-0 py-2 px-6 focus:outline-none rounded-full text-h6">
                             Acesse já <i className="bi bi-arrow-up-right ml-2 text-xs"></i>
                     </a>
 
