@@ -1,6 +1,5 @@
 import React from "react";
 import CardModulo from "../components/CardModulo";
-import Header from "../components/Header";
 
 export default function LocationPage() {
   const cardsData = [
@@ -29,8 +28,6 @@ export default function LocationPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Header />
-
       <div className="flex flex-col items-center justify-center py-10 px-4">
         {cardsData.map((card, index) => (
           <CardModulo key={index} {...card} />
