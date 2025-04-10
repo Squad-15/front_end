@@ -11,6 +11,5 @@ export const SectionAbout = () => {
           ↗
         </div>
       </section>
-      
     );
 }
