@@ -19,7 +19,7 @@ export const Header = () => {
         />
       )}
 
-      <header className="flex py-4 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50 mb-8 md:mb-0">
+      <header className="flex py-4 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50 mb-6 md:mb-0">
         <div className="flex flex-wrap items-center justify-between gap-4 w-full max-w-screen-xl mx-auto">
 
           <Link href="#" className="max-sm:hidden">

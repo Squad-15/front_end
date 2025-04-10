@@ -59,3 +59,27 @@
   .checkbox label{
     margin-left: 5px;
   }
+  /* Responsividade */
+@media (max-width: 768px) {
+  .login-box {
+    width: 90%;
+  }
+
+  .login-box img {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 20px;
+  }
+
+  .login-input {
+    width: 100%;
+  }
+
+  .login-box img {
+    width: 70%;
+  }
+}

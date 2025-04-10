@@ -1,7 +1,7 @@
 // components/CardModulo/index.jsx
 import React from "react";
 
-const CardModulo = ({ image, category, title, description, link }) => {
+const CardModulo = ({ image, category, title, subTitle, description, link }) => {
   return (
     <div className="relative flex bg-clip-border rounded-xl bg-white text-gray-700 shadow-md w-full max-w-[48rem] flex-row mb-8">
       <div className="relative w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none bg-clip-border rounded-xl shrink-0">
@@ -12,31 +12,26 @@ const CardModulo = ({ image, category, title, description, link }) => {
         />
       </div>
       <div className="p-6">
-        <h6 className="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">
+        <h6 className="block mb-4 font-sans text-[18px] antialiased font-extrabold leading-relaxed tracking-normal text-black-700 uppercase">
           {category}
         </h6>
-        <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+        <h4 className="block mb-2 font-sans text-[16px] antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
           {title}
         </h4>
-        <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+        <p className="block mb-5 font-sans text-[13px] antialiased font-normal leading-relaxed text-gray-800">
+          {subTitle}
+        </p>
+        <hr className="my-2 border-t-1 border-black w-50" />
+        <p className="block mb-8 font-sans text-[13px] antialiased font-normal leading-relaxed text-gray-700">
           {description}
         </p>
         <a href={link} className="inline-block">
           <button
-            className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg hover:bg-gray-900/10 active:bg-gray-900/20"
+            className="flex items-center gap-2 px-6 py-3 font-sans text-[15px] font-semibold
+            text-center text-white-600 align-middle transition-transform duration-300 transform rounded-full bg-red-700 text-white hover:scale-105 "
             type="button"
           >
-            Learn More
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="w-4 h-4"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-            </svg>
+            Iniciar
           </button>
         </a>
       </div>
