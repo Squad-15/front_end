@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import StepIndicator from "../StepIndicator";
 
 export const FormRegister = () => {
     const [step, setStep] = useState(1);
@@ -30,15 +31,26 @@ export const FormRegister = () => {
         // Aqui você pode fazer o que quiser com os dados do formulário, como enviar para uma API ou armazenar no estado global.
     }
 
+    const steps = [
+        { id: 1, title: "Dados Pessoais" },
+        { id: 2, title: "Informações Profissionais" },
+        { id: 3, title: "Usuário e Permissão" },
+    ];
 
     return(
-        <div className="max-w-4xl max-sm:max-w-lg mx-auto p-6 mt-6">
+    <div className="max-w-4xl max-sm:max-w-lg mx-auto p-6 mt-6">
         <div className="text-center mb-12 sm:mb-16">
             <a href="javascript:void(0)"><img
             src="/assets/img/logo.png" alt="logo" className='w-44 inline-block' />
             </a>
             <h4 className="text-slate-600 text-h4 mt-6">Iniciar Novo Cadastro</h4>
         </div>
+
+        <div className="flex justify-center gap-8 mb-8">
+            {steps.map(({ id, title }) => (
+            <StepIndicator key={id} step={id} currentStep={step} title={title} />
+        ))}
+  </div>
 
       <form onSubmit={handleSubmit}>
         {step === 1 && (
@@ -148,7 +160,7 @@ export const FormRegister = () => {
               Voltar
             </button>
           )}
-          {step < 3 ? (
+          {step < 4 ? (
             <button
               type="button"
               onClick={handleNextStep}
