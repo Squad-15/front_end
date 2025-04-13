@@ -1,4 +1,3 @@
-// hooks/useFormRegister.ts
 import { useState, useEffect } from "react";
 
 export const useFormRegister = () => {
@@ -10,11 +9,18 @@ export const useFormRegister = () => {
     lname: "",
     email: "",
     number: "",
+    username: "",
+    nivelPermissao: "",
+    cargo: "",
+    departamento: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+    });
+};
 
   const handleNextStep = () => setStep((prev) => prev + 1);
   const handlePrevStep = () => setStep((prev) => prev - 1);

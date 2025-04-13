@@ -1,5 +1,5 @@
 interface StepOneProps {
-    formData: any;
+    formData: { name: string; lname: string; email: string; number: string };
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
