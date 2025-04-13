@@ -160,7 +160,7 @@ export const FormRegister = () => {
               Voltar
             </button>
           )}
-          {step < 4 ? (
+          {step < 3 ? (
             <button
               type="button"
               onClick={handleNextStep}
