@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 export const useFormRegister = () => {
   const [step, setStep] = useState(1);
   const [departaments, setDepartaments] = useState([]);
+  const [profile, setProfile] = useState([]);
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -13,6 +15,7 @@ export const useFormRegister = () => {
     nivelPermissao: "",
     cargo: "",
     departamento: "",
+    profile: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -31,15 +34,22 @@ export const useFormRegister = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/departaments")
+    fetch("http://localhost:8080/metadata/departaments")
       .then((res) => res.json())
       .then((data) => setDepartaments(data));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/metadata/profiles")
+      .then((res) => res.json())
+      .then((data) => setProfile(data));
   }, []);
 
   return {
     step,
     setStep,
     departaments,
+    profile,
     formData,
     handleChange,
     handleNextStep,

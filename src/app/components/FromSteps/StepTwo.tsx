@@ -4,15 +4,17 @@ type StepTwoProps = {
   formData: {
     cargo: string;
     departamento: string;
+    profile: string;
   };
   handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   departaments: { value: string; label: string }[];
+  profile: { value: string; label: string }[];
 };
 
-const StepTwo = ({ formData, handleChange, departaments }: StepTwoProps) => {
+const StepTwo = ({ formData, handleChange, departaments, profile }: StepTwoProps) => {
   return (
     <div className="grid sm:grid-cols-2 gap-8">
-      <div>
+      {/* <div>
         <label className="text-slate-800 text-sm font-medium mb-2 block">Cargo</label>
         <select
           name="cargo"
@@ -26,7 +28,24 @@ const StepTwo = ({ formData, handleChange, departaments }: StepTwoProps) => {
           <option value="gerente">Gerente</option>
           <option value="estagiario">Estagiário</option>
         </select>
+      </div> */}
+       <div>
+        <label className="text-slate-800 text-sm font-medium mb-2 block">Cargo</label>
+        <select
+          name="profile"
+          value={formData.profile}
+          onChange={handleChange}
+          className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
+        >
+          <option value="">Selecione o cargo</option>
+          {profile.map((prof) => (
+            <option key={prof.value} value={prof.value}>
+              {prof.label}
+            </option>
+          ))}
+        </select>
       </div>
+
       <div>
         <label className="text-slate-800 text-sm font-medium mb-2 block">Departamento</label>
         <select
