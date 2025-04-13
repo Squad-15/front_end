@@ -1,56 +1,26 @@
 "use client";
-import { useEffect, useState } from "react";
 import StepIndicator from "../StepIndicator";
 import { StepOne } from "../FromSteps/StepOne";
 import StepTwo from "../FromSteps/StepTwo";
 import StepThree from "../FromSteps/StepThree";
+import { useFormRegister } from "@/app/hooks/useFormRegister";
 
 export const FormRegister = () => {
-    const [step, setStep] = useState(1);
-
-    const [formData, setFormData] = useState({
-        name: "",
-        lname: "",
-        email: "",
-        number: "",
-        cargo: "",
-        departamento: "",
-        username: "",
-        nivelPermissao: "",
-    })
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
-
-    const handleNextStep = () => {
-        setStep(step + 1);
-    }
-
-    const handlePrevStep = () => {
-        setStep(step - 1);
-    }
-
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log(formData);
-        // Aqui você pode fazer o que quiser com os dados do formulário, como enviar para uma API ou armazenar no estado global.
-    }
-
-    const steps = [
+    const {
+        step,
+        departaments,
+        formData,
+        handleChange,
+        handleNextStep,
+        handlePrevStep,
+        handleSubmit
+      } = useFormRegister();
+    
+      const steps = [
         { id: 1, title: "Dados Pessoais" },
         { id: 2, title: "Informações Profissionais" },
         { id: 3, title: "Usuário e Permissão" },
-    ];
-
-    const [departaments, setDepartaments] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:8080/departaments")
-            .then(res => res.json())
-            .then(data => setDepartaments(data));
-    }, []);
+      ];
 
     return(
     <div className="max-w-4xl max-sm:max-w-lg mx-auto p-6 mt-6">
@@ -82,6 +52,7 @@ export const FormRegister = () => {
             handleChange={handleChange}
         />
         )}
+        
     <div className="mt-12 flex justify-between">
           {step > 1 && (
             <button
