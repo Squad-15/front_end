@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StepIndicator from "../StepIndicator";
 
 export const FormRegister = () => {
@@ -36,6 +36,14 @@ export const FormRegister = () => {
         { id: 2, title: "Informações Profissionais" },
         { id: 3, title: "Usuário e Permissão" },
     ];
+
+    const [departaments, setDepartaments] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/departaments")
+            .then(res => res.json())
+            .then(data => setDepartaments(data));
+    }, []);
 
     return(
     <div className="max-w-4xl max-sm:max-w-lg mx-auto p-6 mt-6">
@@ -90,16 +98,17 @@ export const FormRegister = () => {
                 </div>
                 <div>
                 <label className="text-slate-800 text-sm font-medium mb-2 block">Departamento</label>
-                <select 
-                    name="departamento" 
+                <select
+                    name="departamento"
                     className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
                 >
-                    <option value="">Selecione o departamento</option>
-                    <option value="rh">Recursos Humanos</option>
-                    <option value="ti">Tecnologia da Informação</option>
-                    <option value="financeiro">Financeiro</option>
-                    <option value="comercial">Comercial</option>
-                </select>
+            <option value="">Selecione o departamento</option>
+                {departaments.map(dep => (
+                <option key={dep.value} value={dep.value}>
+                    {dep.label}
+                </option>
+            ))}
+        </select>
             </div>
 
             <div>
@@ -136,7 +145,7 @@ export const FormRegister = () => {
                     className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
                     placeholder="Ex: joao.silva" />
             </div>
-        <div>
+            <div>
                 <label className="text-slate-800 text-sm font-medium mb-2 block">Nível de Permissão</label>
                 <select
                     name="nivelPermissao"
