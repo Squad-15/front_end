@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
 
-  const noHeaderRoutes = ["/login", "/modulo"];
+  const noHeaderRoutes = ["/login", "/modulo", "/register"];
 
   const showHeader = !noHeaderRoutes.includes(pathname);
   return (

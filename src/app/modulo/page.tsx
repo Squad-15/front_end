@@ -1,6 +1,5 @@
 import React from "react";
 import CardModulo from "../components/CardModulo";
-import formaturaIcon from "../../../public/assets/img/icons/formaturaIcon";
 
 export default function LocationPage() {
   const cardsData = [
