@@ -10,6 +10,7 @@ export const FormRegister = () => {
         step,
         departaments,
         profile,
+        typeconnection,
         formData,
         handleChange,
         handleNextStep,
@@ -46,6 +47,7 @@ export const FormRegister = () => {
             handleChange={handleChange}
             departaments={departaments}
             profile={profile}
+            typeconnection={typeconnection}
         />
 )}      
         {step === 3 && (

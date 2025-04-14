@@ -4,6 +4,8 @@ export const useFormRegister = () => {
   const [step, setStep] = useState(1);
   const [departaments, setDepartaments] = useState([]);
   const [profile, setProfile] = useState([]);
+  const [typeconnection, setTypeConnection] = useState([]);
+
 
 
   const [formData, setFormData] = useState({
@@ -16,6 +18,7 @@ export const useFormRegister = () => {
     cargo: "",
     departamento: "",
     profile: "",
+    typeconnection: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -45,11 +48,18 @@ export const useFormRegister = () => {
       .then((data) => setProfile(data));
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:8080/metadata/typeconnection")
+      .then((res) => res.json())
+      .then((data) => setTypeConnection(data));
+  }, []);
+
   return {
     step,
     setStep,
     departaments,
     profile,
+    typeconnection,
     formData,
     handleChange,
     handleNextStep,
