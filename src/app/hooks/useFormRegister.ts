@@ -5,8 +5,7 @@ export const useFormRegister = () => {
   const [departaments, setDepartaments] = useState([]);
   const [profile, setProfile] = useState([]);
   const [typeconnection, setTypeConnection] = useState([]);
-
-
+  const [roleUser, setRoleUser] = useState([]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,6 +18,7 @@ export const useFormRegister = () => {
     departamento: "",
     profile: "",
     typeconnection: "",
+    roleUser: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -54,12 +54,19 @@ export const useFormRegister = () => {
       .then((data) => setTypeConnection(data));
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:8080/metadata/roleuser")
+      .then((res) => res.json())
+      .then((data) => setRoleUser(data));
+  }, []);
+
   return {
     step,
     setStep,
     departaments,
     profile,
     typeconnection,
+    roleUser,
     formData,
     handleChange,
     handleNextStep,

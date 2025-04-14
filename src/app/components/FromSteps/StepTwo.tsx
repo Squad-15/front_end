@@ -59,21 +59,6 @@ const StepTwo = ({ formData, handleChange, departaments, profile, typeconnection
         />
     </div>
 
-    {/* <div>
-        <label className="text-slate-800 text-sm font-medium mb-2 block">Tipo de Vínculo</label>
-        <select 
-        name="tipoVinculo" 
-        className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
-        >
-        <option value="">Selecione o tipo de vínculo</option>
-        <option value="clt">CLT</option>
-        <option value="pj">Pessoa Jurídica (PJ)</option>
-        <option value="estagio">Estágio</option>
-        <option value="temporario">Temporário</option>
-        </select>
-        </div>
-   </div> */}
-
     <div>
         <label className="text-slate-800 text-sm font-medium mb-2 block">Tipo de Vínculo</label>
         <select

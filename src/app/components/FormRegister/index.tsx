@@ -11,6 +11,7 @@ export const FormRegister = () => {
         departaments,
         profile,
         typeconnection,
+        roleUser,
         formData,
         handleChange,
         handleNextStep,
@@ -21,7 +22,7 @@ export const FormRegister = () => {
       const steps = [
         { id: 1, title: "Dados Pessoais" },
         { id: 2, title: "Informações Profissionais" },
-        { id: 3, title: "Usuário e Permissão" },
+        { id: 3, title: "Localidade e Permissão" },
       ];
 
     return(
@@ -41,6 +42,7 @@ export const FormRegister = () => {
 
       <form onSubmit={handleSubmit}>
       {step === 1 && <StepOne formData={formData} handleChange={handleChange} />}
+
       {step === 2 && (
         <StepTwo
             formData={formData}
@@ -54,6 +56,7 @@ export const FormRegister = () => {
         <StepThree
             formData={formData}
             handleChange={handleChange}
+            roleUser={roleUser}
         />
         )}
         
