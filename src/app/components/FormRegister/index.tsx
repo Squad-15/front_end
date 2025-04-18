@@ -11,6 +11,7 @@ export const FormRegister = () => {
         departaments,
         profile,
         typeconnection,
+        location,
         roleUser,
         formData,
         handleChange,
@@ -57,6 +58,7 @@ export const FormRegister = () => {
             formData={formData}
             handleChange={handleChange}
             roleUser={roleUser}
+            optionsLocation={location}
         />
         )}
         
