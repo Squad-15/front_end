@@ -92,7 +92,6 @@ export const FormRegister = () => {
                   <button
                       type="submit"
                       className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition flex items-center justify-center min-w-[120px]"
-                      disabled={isSubmitting}
                     >
                       Cadastrar
                   </button>
