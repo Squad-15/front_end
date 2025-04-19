@@ -28,7 +28,7 @@ export const FormRegister = () => {
       ];
 
     return(
-    <div className="max-w-4xl max-sm:max-w-lg mx-auto p-6 mt-6">
+      <div className="w-full max-w-4xl max-sm:max-w-lg mx-auto p-6 mt-6 md:mt-0 md:p-0">
         <div className="text-center mb-12 sm:mb-16">
             <a href="javascript:void(0)"><img
             src="/assets/img/logo.png" alt="logo" className='w-44 inline-block' />
@@ -83,12 +83,6 @@ export const FormRegister = () => {
                 Próximo
               </button>
             ) : (
-              // <button
-              //   type="submit"
-              //   className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
-              // >
-              //   Cadastrar
-              // </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition flex items-center justify-center min-w-[120px]"
