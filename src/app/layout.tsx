@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import { Header } from "./components/Header";
+import { ToastContainer } from 'react-toastify';
 import "./globals.css";
 
 export default function RootLayout({
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         {showHeader && <Header />}
         {children}
+        <ToastContainer />
       </body>
     </html>
   )

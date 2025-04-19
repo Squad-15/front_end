@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const useFormRegister = () => {
   const [step, setStep] = useState(1);
@@ -46,8 +47,8 @@ export const useFormRegister = () => {
   
       if (response.ok) {
         const result = await response.json();
+        toast.success("Usuário criado com sucesso!");
         console.log("Usuário criado com sucesso:", result);
-        // Você pode redirecionar ou mostrar uma mensagem de sucesso
       } else {
         const error = await response.text();
         console.error("Erro ao criar usuário:", error);
