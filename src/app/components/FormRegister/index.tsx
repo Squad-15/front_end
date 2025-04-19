@@ -42,53 +42,80 @@ export const FormRegister = () => {
     </div>
 
       <form onSubmit={handleSubmit}>
-      {step === 1 && <StepOne formData={formData} handleChange={handleChange} />}
+        {step === 1 && <StepOne formData={formData} handleChange={handleChange} />}
 
-      {step === 2 && (
-        <StepTwo
-            formData={formData}
-            handleChange={handleChange}
-            departaments={departaments}
-            profile={profile}
-            typeconnection={typeconnection}
-        />
-)}      
-        {step === 3 && (
-        <StepThree
-            formData={formData}
-            handleChange={handleChange}
-            roleUser={roleUser}
-            optionsLocation={location}
-        />
-        )}
-        
-    <div className="mt-12 flex justify-between">
-          {step > 1 && (
-            <button
-              type="button"
-              onClick={handlePrevStep}
-              className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition"
-            >
-              Voltar
-            </button>
+        {step === 2 && (
+          <StepTwo
+              formData={formData}
+              handleChange={handleChange}
+              departaments={departaments}
+              profile={profile}
+              typeconnection={typeconnection}
+          />
+    )}      
+          {step === 3 && (
+          <StepThree
+              formData={formData}
+              handleChange={handleChange}
+              roleUser={roleUser}
+              optionsLocation={location}
+          />
           )}
-          {step < 3 ? (
-            <button
-              type="button"
-              onClick={handleNextStep}
-              className="px-4 py-2 bg-primary text-white rounded hover:bg-red-600 transition"
-            >
-              Próximo
-            </button>
-          ) : (
-            <button
-              type="submit"
-              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
-            >
-              Cadastrar
-            </button>
-          )}
-        </div>
+          
+      <div className="mt-12 flex justify-between">
+            {/* {step > 1 && (
+              <button
+                type="button"
+                onClick={handlePrevStep}
+                className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition"
+              >
+                Voltar
+              </button>
+            )}
+            {step < 3 ? (
+              <button
+                type="button"
+                onClick={handleNextStep}
+                className="px-4 py-2 bg-primary text-white rounded hover:bg-red-600 transition"
+              >
+                Próximo
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+              >
+                Cadastrar
+              </button>
+            )} */}
+
+            {step > 1 && (
+              <button
+                type="button"
+                onClick={handlePrevStep}
+                className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition"
+              >
+                Voltar
+              </button>
+            )}
+
+            {step < 3 ? (
+              <button
+                type="button"
+                onClick={handleNextStep}
+                className="px-4 py-2 bg-primary text-white rounded hover:bg-red-600 transition"
+              >
+                Próximo
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+              >
+                Cadastrar
+              </button>
+            )}
+          </div>
       </form>
     </div>
     );

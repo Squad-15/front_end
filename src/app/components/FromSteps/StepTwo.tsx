@@ -21,7 +21,7 @@ const StepTwo = ({ formData, handleChange, departaments, profile, typeconnection
         <label className="text-slate-800 text-sm font-medium mb-2 block">Cargo</label>
         <select
           name="cargo"
-          value={formData.profile}
+          value={formData.cargo}
           onChange={handleChange}
           className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
         >
