@@ -56,16 +56,18 @@ export const useFormRegister = () => {
       }
   
       const user = await response.json();
+
+      console.log(user)
   
       // Monta o corpo do e-mail
       const emailBody = {
-        ownerRef: user.name,
+        ownerRef: user.firstName,
         emailFrom: "jota.nunes@email.com",
         emailTo: user.email,
         subject: "Acesso ao Sistema - Criação de Senha",
-        text: `Prezado ${user.name},
+        text: `Prezado ${user.firstName},
   
-        Sua matrícula no sistema é: ${user.registrationNumber}.
+        Sua matrícula no sistema é: ${user.numberRegister}.
         
         Para acessar a plataforma, por favor, defina sua senha através do link abaixo:
         https://sistema.com.br/definir-senha?token=${user.token || 'abc123'}
@@ -75,6 +77,8 @@ export const useFormRegister = () => {
         Atenciosamente,
         Equipe Jota Nunes`
       };
+
+      console.log("Corpo do e-mail:", emailBody);
   
       // Envia o e-mail
       await fetch('http://localhost:8080/sending-email', {
