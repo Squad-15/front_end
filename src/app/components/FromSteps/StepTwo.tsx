@@ -6,8 +6,9 @@ type StepTwoProps = {
     departamento: string;
     profile: string;
     typeconnection: string;
+    dataAdmissao: string;
   };
-  handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleChange: (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
   departaments: { value: string; label: string }[];
   profile: { value: string; label: string }[];
   typeconnection: { value: string; label: string }[];
@@ -19,7 +20,7 @@ const StepTwo = ({ formData, handleChange, departaments, profile, typeconnection
        <div>
         <label className="text-slate-800 text-sm font-medium mb-2 block">Cargo</label>
         <select
-          name="profile"
+          name="cargo"
           value={formData.profile}
           onChange={handleChange}
           className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all"
@@ -51,13 +52,16 @@ const StepTwo = ({ formData, handleChange, departaments, profile, typeconnection
       </div>
 
       <div>
-        <label className="text-slate-800 text-sm font-medium mb-2 block">Data de Admissão</label>
-        <input 
-        type="date" 
-        name="dataAdmissao" 
-        className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" 
-        />
-    </div>
+          <label className="text-slate-800 text-sm font-medium mb-2 block">Data de Admissão</label>
+          <input 
+            type="date" 
+            name="dataAdmissao" 
+            value={formData.dataAdmissao}
+            onChange={handleChange}
+            className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" 
+          />
+
+      </div>
 
     <div>
         <label className="text-slate-800 text-sm font-medium mb-2 block">Tipo de Vínculo</label>

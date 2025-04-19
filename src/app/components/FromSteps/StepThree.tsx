@@ -16,7 +16,7 @@ const StepThree = ({ formData, handleChange, roleUser, optionsLocation}: StepThr
   return (
     <div className="grid sm:grid-cols-2 gap-8">
          <div>
-        <label className="text-slate-800 text-sm font-medium mb-2 block">Nível de Permissão</label>
+        <label className="text-slate-800 text-sm font-medium mb-2 block">Localidade</label>
         <select
           name="location"
           value={formData.location}

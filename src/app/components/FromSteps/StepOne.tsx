@@ -8,11 +8,11 @@ export const StepOne = ({ formData, handleChange }: StepOneProps) => {
         <div className="grid sm:grid-cols-2 gap-8">
         <div>
             <label className="text-slate-800 text-sm font-medium mb-2 block">Nome</label>
-            <input name="name" value={formData.name} onChange={handleChange} type="text" className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Insira o nome" />
+            <input name="firstName" value={formData.name} onChange={handleChange} type="text" className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Insira o nome" />
             </div>
             <div>
             <label className="text-slate-800 text-sm font-medium mb-2 block">Sobrenome</label>
-            <input name="lname" value={formData.lname} onChange={handleChange} type="text" className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Insira o sobrenome" />
+            <input name="lastName" value={formData.lname} onChange={handleChange} type="text" className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Insira o sobrenome" />
             </div>
             <div>
             <label className="text-slate-800 text-sm font-medium mb-2 block">E-mail</label>
@@ -20,7 +20,7 @@ export const StepOne = ({ formData, handleChange }: StepOneProps) => {
             </div>
             <div>
             <label className="text-slate-800 text-sm font-medium mb-2 block">Telefone</label>
-            <input name="number" value={formData.number} onChange={handleChange} type="number" className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Insira o telefone" />
+            <input name="phone" value={formData.number} onChange={handleChange} type="number" className="bg-slate-100 w-full text-slate-800 text-sm px-4 py-3 rounded focus:bg-transparent outline-blue-500 transition-all" placeholder="Insira o telefone" />
         </div>
     </div>
     );

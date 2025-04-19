@@ -9,20 +9,18 @@ export const useFormRegister = () => {
   const [location, setLocation] = useState([]);
 
   const [formData, setFormData] = useState({
-    name: "",
-    lname: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    number: "",
-    username: "",
-    nivelPermissao: "",
+    phone: "",
+    roleUser: "",
     cargo: "",
     departamento: "",
-    profile: "",
     typeconnection: "",
-    roleUser: "",
     location: "",
+    dataAdmissao: "",
   });
-
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
         ...formData,
@@ -33,10 +31,31 @@ export const useFormRegister = () => {
   const handleNextStep = () => setStep((prev) => prev + 1);
   const handlePrevStep = () => setStep((prev) => prev - 1);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-  };
+  
+    try {
+      const response = await fetch("http://localhost:8080/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Usuário criado com sucesso:", result);
+        // Você pode redirecionar ou mostrar uma mensagem de sucesso
+      } else {
+        const error = await response.text();
+        console.error("Erro ao criar usuário:", error);
+      }
+    } catch (err) {
+      console.error("Erro na requisição:", err);
+    }
+  };  
 
   useEffect(() => {
     fetch("http://localhost:8080/metadata/departaments")
