@@ -17,7 +17,8 @@ export const FormRegister = () => {
         handleChange,
         handleNextStep,
         handlePrevStep,
-        handleSubmit
+        handleSubmit,
+        isSubmitting
       } = useFormRegister();
     
       const steps = [
@@ -82,12 +83,32 @@ export const FormRegister = () => {
                 Próximo
               </button>
             ) : (
+              // <button
+              //   type="submit"
+              //   className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+              // >
+              //   Cadastrar
+              // </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition flex items-center justify-center min-w-[120px]"
+                disabled={isSubmitting}
               >
-                Cadastrar
-              </button>
+                {isSubmitting ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5 animate-spin fill-white"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 22c5.421 0 10-4.579 10-10h-2c0 4.337-3.663 8-8 8s-8-3.663-8-8c0-4.336 3.663-8 8-8V2C6.579 2 2 6.58 2 12c0 5.421 4.579 10 10 10z"
+                    />
+                  </svg>
+                ) : (
+                  "Cadastrar"
+                )}
+            </button>
+
             )}
           </div>
       </form>
