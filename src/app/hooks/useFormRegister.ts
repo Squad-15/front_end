@@ -21,6 +21,23 @@ export const useFormRegister = () => {
     location: "",
     dataAdmissao: "",
   });
+
+  const resetForm = () => {
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      roleUser: "",
+      cargo: "",
+      departamento: "",
+      typeconnection: "",
+      location: "",
+      dataAdmissao: "",
+    });
+    setStep(1);
+  };
+  
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
@@ -44,7 +61,7 @@ export const useFormRegister = () => {
     setIsSubmitting(true);
   
     try {
-      const response = await fetch('http://localhost:8080/users/register', {
+      const response = await fetch('http://localhost:8080/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -84,6 +101,7 @@ export const useFormRegister = () => {
       console.error("Erro ao cadastrar usuário:", error);
       toast.error("Erro ao cadastrar usuário.");
     } finally {
+      resetForm();
       setIsSubmitting(false);
     }
   };
