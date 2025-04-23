@@ -97,10 +97,10 @@ export const useFormRegister = () => {
         body: JSON.stringify(emailBody),
       })
 
-      toast.success('Usuário cadastrado e e-mail enviado com sucesso!')
+      toast.success('Usuário cadastrado com sucesso!')
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error)
-      toast.error('Erro ao cadastrar usuário.')
+      toast.error('Erro ao cadastrar usuário. Tente novamente mais tarde.')
     } finally {
       resetForm()
       setIsSubmitting(false)
