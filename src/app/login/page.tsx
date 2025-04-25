@@ -4,7 +4,23 @@ import "/public/styles/login.css";
 import logo from "/public/assets/img/logo.png";
 
 export default function Login() {
-  const { matricula, setMatricula, password, setPassword, handleLogin } = useLogin();
+  const {
+    matricula,
+    setMatricula,
+    password,
+    setPassword,
+    handleLogin,
+    isRedirecting,
+  } = useLogin();
+
+  if (isRedirecting) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-white">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary"></div>
+        <p className="mt-4 text-primary font-semibold">Redirecionando...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="login-container">

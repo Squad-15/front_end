@@ -9,6 +9,8 @@ export function useLogin() {
   const [error, setError] = useState<string | null>(null)
   const [user, setUser] = useState<unknown>(null)
 
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
   const handleLogin = async () => {
     setLoading(true)
     setError(null)
@@ -41,6 +43,7 @@ export function useLogin() {
       }
 
       setUser(data)
+      setIsRedirecting(true);
       window.location.href = '/modulo'
     } catch (err) {
       setMatricula('')
@@ -68,5 +71,6 @@ export function useLogin() {
     setUser,
     setLoading,
     setError,
+    isRedirecting,
   }
 }
