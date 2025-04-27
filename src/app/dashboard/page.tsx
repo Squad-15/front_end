@@ -1,9 +1,7 @@
-import SideBar from "../components/SideBar";
+import Main from "../components/Main";
 
-const Dashboard = () => {
+export default function Dashboard() {
   return (
-    <SideBar />
+      <Main />
   );
 }
-
-export default Dashboard;
