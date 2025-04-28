@@ -1,5 +1,7 @@
-export default function Main() {
+export const Main = () => {
     return(
         <h1>Main</h1>
     );
 }
+
+export default Main;

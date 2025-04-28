@@ -1,7 +1,18 @@
-import Main from "../components/Main";
+import { InformationsAboutPlataform } from "../components/InformationsAboutPlataform";
+import { ListCourses } from "../components/ListCourses";
+import { ListUsers } from "../components/ListUsers";
 
 export default function Dashboard() {
   return (
-      <Main />
+      <>
+          <div>
+            <InformationsAboutPlataform />
+          </div>
+  
+          <div>
+            <ListUsers />
+            <ListCourses />
+          </div>
+        </>
   );
 }

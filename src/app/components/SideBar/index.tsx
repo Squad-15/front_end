@@ -8,7 +8,7 @@ const SideBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="relative bg-[#f7f6f9] h-full min-h-screen">
+    <div className="relative p-0 md:p-10">
       <div className="flex items-start">
         <MenuSidebarItems isOpen={isSidebarOpen} closeMenu={() => setIsSidebarOpen(false)} />
         <ButtonMenuResponsive openMenu={() => setIsSidebarOpen(true)} />     
