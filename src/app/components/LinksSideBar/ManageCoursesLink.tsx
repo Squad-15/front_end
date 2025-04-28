@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 interface ManageCoursesProps {
   isCursosOpen: boolean;
   setIsCursosOpen: (value: boolean) => void;
@@ -8,9 +6,7 @@ interface ManageCoursesProps {
 const ManageCourses = ({ isCursosOpen, setIsCursosOpen }: ManageCoursesProps) => {
   return (
     <>
-      <Link
-        href="#"
-        passHref
+      <div
         onClick={() => setIsCursosOpen(!isCursosOpen)}
         className="text-slate-800 text-[15px] font-medium flex items-center cursor-pointer hover:bg-gray-100 rounded-md px-3 py-2.5 transition-all duration-300"
       >
@@ -30,7 +26,7 @@ const ManageCourses = ({ isCursosOpen, setIsCursosOpen }: ManageCoursesProps) =>
             data-original="#000000"
           />
         </svg>
-      </Link>
+      </div>
 
       <ul className={`sub menu overflow-hidden transition-[max-height] duration-500 ease-in-out ml-8 ${isCursosOpen ? "max-h-[500px]" : "max-h-0"}`}>
         <li>

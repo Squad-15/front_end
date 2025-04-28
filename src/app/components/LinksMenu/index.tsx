@@ -27,7 +27,6 @@ export const LinksMenu = () => {
                     <ReportDatasLink isReportOpen={isReportOpen} setIsReportOpen={setIsReportOpen} />
                     <ReportSquadDataLink isReportSquadOpen={isReportSquadOpen} setIsReportSquadOpen={setIsReportSquadOpen} />
                     <AssetsMenu />
-
                 </li>
             </ul>
         </div>

@@ -6,8 +6,7 @@ interface ManageContributorsProps {
 const ManageContributorsLink = ({ isColaboradoresOpen, setIsColaboradoresOpen }: ManageContributorsProps) => {
   return (
     <div>
-      <a
-        href="#"
+      <div
         onClick={() => setIsColaboradoresOpen(!isColaboradoresOpen)}
         className="text-slate-800 text-[15px] font-medium flex items-center cursor-pointer hover:bg-gray-100 rounded-md px-3 py-2.5 transition-all duration-300"
       >
@@ -39,7 +38,7 @@ const ManageContributorsLink = ({ isColaboradoresOpen, setIsColaboradoresOpen }:
             data-original="#000000"
           />
         </svg>
-      </a>
+      </div>
 
       <ul
         className={`sub menu overflow-hidden transition-[max-height] duration-500 ease-in-out ml-8 ${
