@@ -6,16 +6,11 @@ interface MenuSidebarItemsProps {
 
 export const MenuSidebarItems = ({ isOpen, closeMenu }: MenuSidebarItemsProps) => {
   return (
+    // remove a class bg-white aqui para testar o menu
     <nav id="sidebar" className="lg:min-w-[250px] w-max max-lg:min-w-8">
-      {/* <div
-        id="sidebar-collapse-menu"
-        className={`bg-white shadow-lg h-screen fixed top-0 left-0 overflow-auto z-[99] transition-all duration-500
-          ${isOpen ? 'max-lg:w-[250px] max-lg:visible' : 'max-lg:w-0 max-lg:invisible'} 
-          lg:min-w-[250px] lg:w-max`}
-      > */}
        <div
         id="sidebar-collapse-menu"
-        className={`shadow-lg h-screen fixed top-0 left-0 overflow-auto z-[99] transition-all duration-500
+        className={`bg-white shadow-lg h-screen fixed top-0 left-0 overflow-auto z-[99] md:z-[0] transition-all duration-500
           ${isOpen ? 'max-lg:w-[250px] max-lg:visible' : 'max-lg:w-0 max-lg:invisible'} 
           lg:min-w-[250px] lg:w-max`}
       >

@@ -22,22 +22,28 @@ export const ListUsers = () => {
   const [IsModalOpenUserDetails, setIsModalOpenUserDetails] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchUsers() {
-      try {
-        const response = await fetch('http://localhost:8080/users/all');
-        const data = await response.json();
-        setUsers(data.slice(0, 10)); // Limitar a 10 usuários
-        // setUsers(data);
-      } catch (error) {
-        console.error('Erro ao buscar usuários:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
 
+
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/users/all');
+      const data = await response.json();
+      setUsers(data.slice(0, 10)); // Limitar a 10 usuários
+    } catch (error) {
+      console.error('Erro ao buscar usuários:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  useEffect(() => {
     fetchUsers();
   }, []);
+
+  const handleUserDeleted = () => {
+    fetchUsers();
+  };
 
   const handleOpenModalEdit = () => setIsModalOpenEdit(true);
   const closeModalEdit = () => setIsModalOpenEdit(false);
@@ -47,6 +53,7 @@ export const ListUsers = () => {
 
   const handleOpenModalUserDetails = () => setIsModalOpenUserDetails(true);
   const closeModalUserDetails = () => setIsModalOpenUserDetails(false);
+
 
   return (
     <section>
@@ -127,8 +134,18 @@ export const ListUsers = () => {
                             <button className="text-yellow-500 hover:text-yellow-700" onClick={handleOpenModalEdit}>
                               <IoCreateOutline size={18} />
                             </button>
-                            <button className="text-red-500 hover:text-red-700">
+                            {/* <button className="text-red-500 hover:text-red-700">
                               <IoTrashOutline size={18} onClick={handleOpenModalDelete} />
+                            </button> */}
+
+                            <button
+                              className="text-red-500 hover:text-red-700"
+                              onClick={() => {
+                                setSelectedUserId(user.id);
+                                handleOpenModalDelete();
+                              }}
+                            >
+                              <IoTrashOutline size={18} />
                             </button>
                           </div>
                         </td>
@@ -149,9 +166,19 @@ export const ListUsers = () => {
         </div>
       )}
 
-    {IsModalOpenDelete && (
+    {/* {IsModalOpenDelete && (
         <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto">
             <ModalDeleteUser closeModalDelete={closeModalDelete}  />
+        </div>
+      )} */}
+
+      {IsModalOpenDelete && selectedUserId && (
+        <div className="fixed inset-0 ...">
+          <ModalDeleteUser
+            closeModalDelete={closeModalDelete}
+            userId={parseInt(selectedUserId)}
+            onUserDeleted={handleUserDeleted}
+          />
         </div>
       )}
 

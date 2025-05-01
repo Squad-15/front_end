@@ -1,8 +1,32 @@
+import { toast } from "react-toastify";
+
 interface ModalDeleteUserProps {
     closeModalDelete: () => void;
+    userId: number;
+    onUserDeleted: () => void;
 }
 
-export const ModalDeleteUser = ({ closeModalDelete }: ModalDeleteUserProps) => {
+
+
+export const ModalDeleteUser = ({ closeModalDelete, userId, onUserDeleted }: ModalDeleteUserProps) => {
+    async function handleDeleteUser(userId: number) {
+        try {
+          const response = await fetch(`http://localhost:8080/users/${userId}`, {
+            method: 'DELETE',
+          });
+      
+          if (response.ok) {
+            toast.success('O Usuário foi excluído com sucesso!');
+            onUserDeleted();
+            closeModalDelete(); 
+          } else {
+            toast('Erro inesperado. Tente novamente mais tarde.');
+          }
+        } catch (error) {
+          console.error('Erro ao deletar usuário:', error);
+        }
+      }
+
     return (
         <div id="modal">
             <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto">
@@ -39,7 +63,8 @@ export const ModalDeleteUser = ({ closeModalDelete }: ModalDeleteUserProps) => {
                             Cancelar
                         </button>
                         <button type="button"
-                            className="px-2 py-2.5 rounded-lg w-full tracking-wide text-white text-sm font-medium border-none outline-none bg-red-500 hover:bg-red-600">
+                            className="px-2 py-2.5 rounded-lg w-full tracking-wide text-white text-sm font-medium border-none outline-none bg-red-500 hover:bg-red-600"
+                            onClick={() => handleDeleteUser(userId)}>
                             Confirmar exclusão
                         </button>
                     </div>
