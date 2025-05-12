@@ -1,36 +1,58 @@
-import React from "react";
-import CardModulo from "../components/CardModulo";
+'use client'
+
+import React, { useState } from 'react'
+import CardModulo from '../components/CardModulo'
+import Footer from '../components/footer'
 
 export default function LocationPage() {
   const cardsData = [
     {
-      image: "assets/img/img-02.png",
-      category: "Aula 1",
-      title: "300 Pontos",
-      subTitle: "Introdução ao Desenvolvimento Ágil",
+      image: 'assets/img/img-02.png',
+      category: 'Aula 1',
+      title: '300 Pontos',
+      subTitle: 'Introdução ao Desenvolvimento Ágil',
       description:
-        "Neste módulo, o foco é a compreensão dos princípios fundamentais do desenvolvimento ágil e suas principais metodologias.",
-      link: "#",
+        'Neste módulo, o foco é a compreensão dos princípios fundamentais do desenvolvimento ágil e suas principais metodologias.',
+      link: '#',
     },
     {
-      image: "assets/img/img-01.png",
-      category: "Aula 2",
-      title: "450 Pontos",
-      subTitle: "Implementando Scrum no Dia a Dia",
+      image: 'assets/img/img-01.png',
+      category: 'Aula 2',
+      title: '450 Pontos',
+      subTitle: 'Implementando Scrum no Dia a Dia',
       description:
-        "Dando continuidade a aula 4, os participantes irão mergulhar nas práticas e cerimônias essenciais do Scrum, como a Sprint Planning, Daily Stand-up, Sprint Review e Sprint Retrospective.",
-      link: "#",
+        'Dando continuidade a aula 4, os participantes irão mergulhar nas práticas e cerimônias essenciais do Scrum, como a Sprint Planning, Daily Stand-up, Sprint Review e Sprint Retrospective.',
+      link: '#',
     },
     {
-      image: "assets/img/img-02.png",
-      category: "Avaliação Final",
-      title: "1000 Pontos",
-      subTitle: "Desafio Prático de Implementação",
+      image: 'assets/img/img-02.png',
+      category: 'Avaliação Final',
+      title: '1000 Pontos',
+      subTitle: 'Desafio Prático de Implementação',
       description:
-        "A Avaliação Final é a oportunidade para os participantes demonstrarem tudo o que aprenderam ao longo do curso. ",
-      link: "#",
+        'A Avaliação Final é a oportunidade para os participantes demonstrarem tudo o que aprenderam ao longo do curso. ',
+      link: '#',
     },
-  ];
+    {
+      image: 'assets/img/img-02.png',
+      category: 'Avaliação Final',
+      title: '1000 Pontos',
+      subTitle: 'Desafio Prático de Implementação',
+      description:
+        'A Avaliação Final é a oportunidade para os participantes demonstrarem tudo o que aprenderam ao longo do curso. ',
+      link: '#',
+    },
+  ]
+  // Paginação
+  const [currentPage, setCurrentPage] = useState(1)
+  const cardsPerPage = 3
+  const totalPages = Math.ceil(cardsData.length / cardsPerPage)
+
+  const indexOfLastCard = currentPage * cardsPerPage
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage
+  const currentCards = cardsData.slice(indexOfFirstCard, indexOfLastCard)
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -138,13 +160,76 @@ export default function LocationPage() {
           </nav>
         </div>
       </header>
+      {/* Segundo header */}
+      <header className="mt-6 py-4 px-4 sm:px-10 bg-transparent font-sans min-h-[70px] tracking-wide relative z-50 w-full mx-auto ">
+        <div className="flex flex-wrap items-center justify-center gap-10 w-[50%] mx-auto rounded-full">
+          <nav className="lg:flex lg:gap-x-8 max-lg:flex max-lg:flex-col max-lg:items-center">
+            <ul className="flex gap-x-8 text-center">
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 font-bold text-[15px] text-bold hover:text-[#BC1F1B]"
+                >
+         
+                  Modulo 1
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 font-bold text-[15px] text-bold hover:text-[#BC1F1B]"
+                >
+      
+                  Modulo 2
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 font-bold text-[15px] text-bold hover:text-[#BC1F1B]">
+                  Modulo 3
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 font-bold text-[15px] text-bold hover:text-[#BC1F1B]"
+                >
+          
+                  Modulo 4
+                </a>
+              </li>
+              <li>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
       {/* Cards */}
       <div className="flex flex-col items-center justify-center py-10 px-4">
-        {cardsData.map((card, index) => (
+        {currentCards.map((card, index) => (
           <CardModulo key={index} {...card} />
         ))}
+        {/* Paginação */}
+        <div className="flex justify-center space-x-2 mt-6">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => paginate(i + 1)}
+              className={`px-4 py-2 rounded-full transition-all duration-200 hover:uppercase hover:bg-red-700 ${
+                currentPage === i + 1
+                  ? 'bg-red-600 text-white'
+                  : 'bg-gray-200 text-gray-800'
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
       </div>
+      {/* Footer */}
+      <Footer />
     </div>
-  );
+  )
 }
