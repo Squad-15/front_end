@@ -1,13 +1,31 @@
-import React from "react";
-import Footer from "../components/footer";
-import ModalVideo from "../components/modalVideo"; // ou o caminho correto relativo
+import React, { useState } from 'react'
+import Footer from '../components/footer'
+import VideoSection from '../components/VideoSection'
+import { IoHeart, IoHeartHalf } from 'react-icons/io5'
 
 export default function VideoPage() {
   return (
     <div>
-      <ModalVideo />
+      <VideoSection youtubeUrl="https://www.youtube.com/watch?v=B7_O-9oOc1o" />
+      <div
+        className="flex justify-center p-1 gap-1 text-red-500"
+        style={{ fontSize: '28px' }}
+      >
+        <IoHeart />
+        <IoHeart />
+        <IoHeart />
+        <IoHeart />
+        <IoHeartHalf />
+      </div>
+      <div>
+        <div className="flex flex-col items-center gap-4 mb-6">
+          <button className="mt-4 px-4 py-2 border border-gray-400 rounded-lg hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out focus:outline-none">
+            Marcar como concluido
+          </button>
+        </div>
+      </div>
       {/* Footer */}
       <Footer />
     </div>
-  );
+  )
 }
