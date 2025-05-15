@@ -42,6 +42,33 @@ export default function LocationPage() {
         'A Avaliação Final é a oportunidade para os participantes demonstrarem tudo o que aprenderam ao longo do curso. ',
       link: '#',
     },
+    {
+      image: 'assets/img/img-02.png',
+      category: 'Avaliação Final',
+      title: '1000 Pontos',
+      subTitle: 'Desafio Prático de Implementação',
+      description:
+        'A Avaliação Final é a oportunidade para os participantes demonstrarem tudo o que aprenderam ao longo do curso. ',
+      link: '#',
+    },
+    {
+      image: 'assets/img/img-02.png',
+      category: 'Avaliação Final',
+      title: '1000 Pontos',
+      subTitle: 'Desafio Prático de Implementação',
+      description:
+        'A Avaliação Final é a oportunidade para os participantes demonstrarem tudo o que aprenderam ao longo do curso. ',
+      link: '#',
+    },
+    {
+      image: 'assets/img/img-02.png',
+      category: 'Avaliação Final',
+      title: '1000 Pontos',
+      subTitle: 'Desafio Prático de Implementação',
+      description:
+        'A Avaliação Final é a oportunidade para os participantes demonstrarem tudo o que aprenderam ao longo do curso. ',
+      link: '#',
+    },
   ]
   // Paginação
   const [currentPage, setCurrentPage] = useState(1)
