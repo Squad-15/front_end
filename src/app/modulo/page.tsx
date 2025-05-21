@@ -255,8 +255,6 @@ export default function LocationPage() {
           ))}
         </div>
       </div>
-      {/* Footer */}
-      <Footer />
     </div>
   )
 }

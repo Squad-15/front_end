@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Footer from '../components/footer'
 import VideoSection from '../components/VideoSection'
 import { IoHeart, IoHeartHalf } from 'react-icons/io5'
+import CardsSection from '../components/cardsection'
 
 export default function VideoPage() {
   return (
@@ -23,9 +24,21 @@ export default function VideoPage() {
             Marcar como concluido
           </button>
         </div>
+        <div className="flex flex-col items-center gap-4 mb-6">
+          <button className="mt-4 px-4 py-2 border border-gray-400 rounded-lg bg-blue-500 hover:bg-blue-500 hover:text-white transition duration-200 ease-in-out focus:outline-none">
+            Próximo
+          </button>
+        </div>
       </div>
-      {/* Footer */}
-      <Footer />
+      <div className="flex items-center justify-center my-8">
+        <div className="flex-grow h-px bg-gray-300"></div>
+        <span className="mx-4 text-xl font-semibold text-gray-700">
+          Exercícios
+        </span>
+        <div className="flex-grow h-px bg-gray-300"></div>
+      </div>
+      {/* cardsection */}
+      <CardsSection />
     </div>
   )
 }
