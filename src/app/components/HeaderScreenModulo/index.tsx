@@ -110,7 +110,7 @@ export const HeaderScreenModulo = () => {
             <ul className="flex flex-col gap-4 lg:flex-row lg:gap-x-8 text-center">
               <li>
               <a
-                  href="#"
+                  href="/modulo"
                   className="flex items-center gap-2 font-bold text-[15px] text-bold hover:text-[#BC1F1B]"
                 >
                   <svg
@@ -128,7 +128,7 @@ export const HeaderScreenModulo = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/path"
                   className="flex items-center gap-2 font-bold text-[15px] text-bold hover:text-[#BC1F1B]"
                 >
                   <svg
