@@ -1,6 +1,4 @@
 'use client';
-
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -23,11 +21,11 @@ export const Header = () => {
         <div className="flex flex-wrap items-center justify-between gap-4 w-full max-w-screen-xl mx-auto">
 
           <Link href="#" className="max-sm:hidden">
-            <Image src="/assets/img/logo.png" alt="logo" width={144} height={40} className="w-36" />
+            <img width={144} height={40} className="w-36" alt="logo" src="assets/img/logo.png" />
           </Link>
 
           <Link href="#" className="hidden max-sm:block">
-            <Image src="/assets/img/logo.png" alt="logo" width={144} height={40} className="w-36" />
+            <img width={144} height={40} className="w-36" alt="logo" src="assets/img/logo.png" />
           </Link>
 
           <div className={`${isMenuOpen ? 'block' : 'hidden'} max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 lg:block`}>
@@ -41,7 +39,7 @@ export const Header = () => {
             <ul className="lg:flex gap-x-5 max-lg:space-y-3">
               <li className="mb-6 hidden max-lg:block">
                 <Link href="#">
-                  <Image src="/assets/img/logo.png" alt="logo" width={144} height={40} className="w-36" />
+                  <img width={144} height={40} className="w-36" alt="logo" src="assets/img/logo.png" />
                 </Link>
               </li>
               {[

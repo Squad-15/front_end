@@ -8,7 +8,7 @@ import { HeaderScreenModulo } from '../components/HeaderScreenModulo'
 export default function LocationPage() {
   const cardsData = [
     {
-      image: 'https://lwfiles.mycourse.app/engineme2-public/3881c9282a2ea42bd348309490429717.png', // pode substituir por imagem mais construção se quiser
+      image: 'https://sdmntprwestus3.oaiusercontent.com/files/00000000-fa18-61fd-bb84-fcd2eabdb0f9/raw?se=2025-05-22T20%3A03%3A48Z&sp=r&sv=2024-08-04&sr=b&scid=f0dcface-b5c6-5b5c-a0fb-bff51ec0f3b0&skoid=04233560-0ad7-493e-8bf0-1347c317d021&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-22T12%3A43%3A52Z&ske=2025-05-23T12%3A43%3A52Z&sks=b&skv=2024-08-04&sig=PZ3rGtNyfcni1qW%2BaeMS3CW71XRbtp07HUkjtCjVV8E%3D',
       category: 'Aula 1',
       title: '300 Pontos',
       subTitle: 'Fundamentos da Construção Civil',
@@ -17,7 +17,7 @@ export default function LocationPage() {
       link: '#',
     },
     {
-      image: 'https://inbec.com.br/storage/courses/open-graph/de76542388f62f3b8c1c4da5d5d8b314-1200x630-quadrant(R).jpeg?token=b60367c5f2396c0e3218d3673e14f39d',
+      image: 'https://www.cursosdearquitetura.com.br/wp-content/uploads/2024/04/Planejamento-e-Gestao-de-Obras-em-Zonas-Costeiras01.jpg',
       category: 'Aula 2',
       title: '450 Pontos',
       subTitle: 'Gestão de Obras e Segurança',
@@ -26,7 +26,7 @@ export default function LocationPage() {
       link: '#',
     },
     {
-      image: 'https://www.cityofbristol.ac.uk/wp-content/uploads/Construction-small-1920x1080.jpg',
+      image: 'https://lh5.googleusercontent.com/OIQ2NIkdfwQT_sTUPUwz3wzodF1XLwH2rH31cbjVd_k8SMWxkW8eylNc_Vw8y0mplX7KHWMkSyqtor9OXidUzurRh9dyKHdPMSY2Z8AUhEdpcFW-phLWKulhybZwlshHgHipbdQ',
       category: 'Avaliação Final',
       title: '1000 Pontos',
       subTitle: 'Projeto Prático de Construção',
@@ -49,7 +49,6 @@ export default function LocationPage() {
   return (
     <div className="min-h-screen font-poppins">
       <HeaderScreenModulo />
-
       {/* Menu de Módulos */}
       <header className="mt-6 py-4 px-4 sm:px-10 bg-transparent min-h-[70px] tracking-wide relative z-50 w-full mx-auto ">
         <div className="flex flex-wrap items-center justify-center gap-10 w-[50%] mx-auto rounded-full">

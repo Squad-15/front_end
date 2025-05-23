@@ -104,7 +104,7 @@ export const HeaderScreenModulo = () => {
       //   </div>
       // </header>
 
-      <header className="mt-6 border-none py-4 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide relative z-50 w-full max-w-screen-xl mx-auto rounded-full font-poppins">
+      <header className="mt-6 border-none py-4 px-4 sm:px-10 min-h-[70px] tracking-wide relative z-50 w-full max-w-screen-xl mx-auto rounded-full font-poppins">
         <div className="flex flex-wrap items-center justify-center gap-6 w-full rounded-full">
           <nav className="flex flex-col lg:flex-row lg:gap-x-8 items-center">
             <ul className="flex flex-col gap-4 lg:flex-row lg:gap-x-8 text-center">
