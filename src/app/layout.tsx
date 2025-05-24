@@ -15,12 +15,12 @@ export default function RootLayout({
   const pathname = usePathname();
 
   // Rotas que não devem mostrar o Header
-  const noHeaderRoutes = ["/login", "/register", "/modulo", "/video", "/path"];
+  const noHeaderRoutes = ["/login", "/register", "/modulo", "/video", "/path", "/ranking"];
 
   // Rotas que não devem mostrar o HeaderScreenModulo
   const noHeaderScreenModuloRoutes = ["/dashboard", "/general", "/video", "/", "/login", "/register"];
 
-  const noHeaderSteppersRoutes = ["/video", "/path", "/login", "/register", "/", "/dashboard"];
+  const noHeaderSteppersRoutes = ["/video", "/path", "/login", "/register", "/", "/dashboard", "/ranking"];
 
   const showHeader = !noHeaderRoutes.includes(pathname);
   const showHeaderScreenModulo = !noHeaderScreenModuloRoutes.includes(pathname);
