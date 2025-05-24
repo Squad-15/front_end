@@ -185,7 +185,7 @@ export const HeaderScreenModulo = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/profile"
                   className="flex items-center gap-2 font-bold text-[15px] text-bold hover:text-[#BC1F1B]"
                 >
                   <svg
