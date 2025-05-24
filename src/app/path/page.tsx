@@ -1,7 +1,9 @@
+import { StepPath } from "../components/StepPath";
+
 export default function PagePath() {
     return (
-        <div className="text-center">
-            <h1>Bem-vindo a Trilha</h1>
+        <div className="flex justify-center mt-40">
+            <StepPath />
         </div>
     );
 }
