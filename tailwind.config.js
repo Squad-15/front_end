@@ -12,6 +12,15 @@ module.exports = {
         poppins: ['Poppins', 'sans-serif'],
         jakarta: ['Plus Jakarta Sans', 'sans-serif'],
       },
+      animation: {
+        float: 'float 3s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+      },
       fontSize: {
         h1: '50px',
         h2: '40px',
@@ -20,7 +29,6 @@ module.exports = {
         h5: '20px',
         h6: '16px',
       },
-      fontWeight: {},
       colors: {
         primary: '#BC1F1B',
         secondary: '#2B2522',

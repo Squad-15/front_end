@@ -164,7 +164,7 @@ export const HeaderScreenModulo = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/shop"
                   className="flex items-center gap-2 font-bold text-[15px] text-bold hover:text-[#BC1F1B]"
                 >
                   <svg
