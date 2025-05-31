@@ -27,7 +27,7 @@ export const ListUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:8080/users/all');
+      const response = await fetch('https://back-end-sz7p.onrender.com/users/all');
       const data = await response.json();
       setUsers(data.slice(0, 10)); // Limitar a 10 usuários
     } catch (error) {
@@ -165,12 +165,6 @@ export const ListUsers = () => {
             <ModalEditUser closeModal={closeModalEdit}  />
         </div>
       )}
-
-    {/* {IsModalOpenDelete && (
-        <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto">
-            <ModalDeleteUser closeModalDelete={closeModalDelete}  />
-        </div>
-      )} */}
 
       {IsModalOpenDelete && selectedUserId && (
         <div className="fixed inset-0 ...">

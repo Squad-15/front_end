@@ -62,7 +62,7 @@ export const useFormRegister = () => {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('http://localhost:8080/auth/register', {
+      const response = await fetch('https://back-end-sz7p.onrender.com/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -91,7 +91,7 @@ export const useFormRegister = () => {
         ].join('\n'),
       }
 
-      await fetch('http://localhost:8080/sending-email', {
+      await fetch('https://back-end-sz7p.onrender.com/sending-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(emailBody),
@@ -108,31 +108,31 @@ export const useFormRegister = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/departaments')
+    fetch('https://back-end-sz7p.onrender.com/metadata/departaments')
       .then((res) => res.json())
       .then((data) => setDepartaments(data))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/profiles')
+    fetch('https://back-end-sz7p.onrender.com/metadata/profiles')
       .then((res) => res.json())
       .then((data) => setProfile(data))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/typeconnection')
+    fetch('https://back-end-sz7p.onrender.com/metadata/typeconnection')
       .then((res) => res.json())
       .then((data) => setTypeConnection(data))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/roleuser')
+    fetch('https://back-end-sz7p.onrender.com/metadata/roleuser')
       .then((res) => res.json())
       .then((data) => setRoleUser(data))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/location')
+    fetch('https://back-end-sz7p.onrender.com/metadata/location')
       .then((res) => res.json())
       .then((data) => setLocation(data))
   }, [])

@@ -11,7 +11,7 @@ interface ModalDeleteUserProps {
 export const ModalDeleteUser = ({ closeModalDelete, userId, onUserDeleted }: ModalDeleteUserProps) => {
     async function handleDeleteUser(userId: number) {
         try {
-          const response = await fetch(`http://localhost:8080/users/${userId}`, {
+          const response = await fetch(`https://back-end-sz7p.onrender.com/users/${userId}`, {
             method: 'DELETE',
           });
       
@@ -20,7 +20,7 @@ export const ModalDeleteUser = ({ closeModalDelete, userId, onUserDeleted }: Mod
             onUserDeleted();
             closeModalDelete(); 
           } else {
-            toast('Erro inesperado. Tente novamente mais tarde.');
+            toast.error('Erro inesperado. Tente novamente mais tarde.');
           }
         } catch (error) {
           console.error('Erro ao deletar usuário:', error);
