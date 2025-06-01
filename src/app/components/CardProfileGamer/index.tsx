@@ -1,6 +1,14 @@
 "use client";
+import { jwtDecode } from "jwt-decode";
 
 // types
+
+interface JwtPayload {
+  sub: string;
+  userId: number;
+  id: number;
+}
+
 export interface Profile {
   department: string;
   profileName: string
@@ -25,13 +33,35 @@ import React, { useState, useEffect } from "react";
 export const CardProfileGamer = () => {
   const [user, setUser] = useState<UserAccount | null>(null);
 
-  useEffect(() => {
+  function getCookie(name: string): string | null {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? decodeURIComponent(match[2]) : null;
+}
+
+useEffect(() => {
     async function fetchUser() {
-      const response = await fetch("http://localhost:8080/users/1");
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        setUser(data);
+      const token = getCookie("token");
+      if (!token) return;
+
+      try {
+        // Decodifica o token para pegar o ID
+        const decoded = jwtDecode<JwtPayload>(token);
+        const userId = decoded.id;
+
+        const response = await fetch(`http://localhost:8080/users/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUser(data);
+        } else {
+          console.error("Erro na requisição:", response.status);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar usuário:", error);
       }
     }
 
