@@ -2,7 +2,6 @@
 import { jwtDecode } from "jwt-decode";
 
 // types
-
 interface JwtPayload {
   sub: string;
   userId: number;
@@ -14,7 +13,6 @@ export interface Profile {
   profileName: string
 }
 
-// types of table UserAccount
 export interface UserAccount {
   id: number;
   firstName: string;
