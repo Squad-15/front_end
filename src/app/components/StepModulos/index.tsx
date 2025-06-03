@@ -1,14 +1,15 @@
 'use client';
 
 import { jwtDecode, JwtPayload } from 'jwt-decode';
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-ionicons';
+import { useState, useEffect } from 'react';
+// import { Link } from 'react-ionicons';
 
 type HeaderScreenStepProps = {
   etapaConcluida: number;
+  onSelecionarModulo: (order: number) => void;
 };
 
-export const HeaderScreenStep: React.FC<HeaderScreenStepProps> = ({ etapaConcluida }) => {
+export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, onSelecionarModulo }) => {
   const [userId, setUserId] = useState<string | null>(null);
   const [userCategoryId, setUserCategoryId] = useState<string | null>(null);
   const [pathUserId, setPathUserId] = useState<string | null>(null);
@@ -88,7 +89,6 @@ export const HeaderScreenStep: React.FC<HeaderScreenStepProps> = ({ etapaConclui
         }
 
         const modulosResponseData = await response.json();
-        console.log("Módulos:", modulosResponseData);
         setModulos(modulosResponseData);
       } catch (e) {
         console.log("Erro ao buscar módulos:", e);
@@ -97,24 +97,27 @@ export const HeaderScreenStep: React.FC<HeaderScreenStepProps> = ({ etapaConclui
 
     fetchModulosPath();
   }, [pathUserId]);
-  
-  
+
   return (
     <header className="mt-6 py-4 px-4 font-poppins sm:px-10 bg-transparent min-h-[70px] tracking-wide relative z-50 w-full mx-auto">
       <div className="flex flex-wrap items-center justify-center gap-10 w-full sm:w-[50%] mx-auto rounded-full">
         <nav className="lg:flex lg:gap-x-8 max-lg:flex max-lg:flex-col max-lg:items-center">
           <ul className="flex gap-x-8 text-center">
             {modulos.map((modulo) => {
-            const isUnlocked = etapaConcluida >= modulo.order;
+            // const isUnlocked = etapaConcluida >= modulo.order;
+            const isUnlocked = true; // para teste
         return (
           <li key={modulo.id}>
             {isUnlocked ? (
-              <Link
-                href={`/modulo/${modulo.order}`}
+              <button
+                onClick={() => {
+                console.log("Clique no botão - passando módulo:", modulo.order)
+                onSelecionarModulo(modulo.order)
+            }}
                 className="flex items-center gap-2 font-bold text-[15px] hover:text-[#BC1F1B]"
               >
                 {modulo.nomeModulo || `Módulo ${modulo.order}`}
-              </Link>
+              </button>
             ) : (
               <span
                 aria-disabled="true"
@@ -123,7 +126,7 @@ export const HeaderScreenStep: React.FC<HeaderScreenStepProps> = ({ etapaConclui
                 {`${modulo.nomeModulo}`}
               </span>
             )}
-          </li>
+        </li>
         );
   })}
           </ul>

@@ -5,7 +5,7 @@ import { Header } from "./components/Header";
 import { ToastContainer } from 'react-toastify';
 import "./globals.css";
 import { HeaderScreenModulo } from "./components/HeaderScreenModulo";
-import { HeaderScreenStep } from "./components/StepModulos";
+// import { HeaderScreenStep } from "./components/StepModulos";
 
 export default function RootLayout({
   children,
@@ -20,11 +20,11 @@ export default function RootLayout({
   // Rotas que não devem mostrar o HeaderScreenModulo
   const noHeaderScreenModuloRoutes = ["/dashboard", "/general", "/video", "/", "/login", "/register", "/service", "/projects", "/location", "/contact"];
 
-  const noHeaderSteppersRoutes = ["/video", "/path", "/login", "/register", "/", "/dashboard", "/ranking" , "/general", "/shop", "/profile", "/service", "/location", "/projects", "/contact"];
+  // const noHeaderSteppersRoutes = ["/video", "/path", "/login", "/register", "/", "/dashboard", "/ranking" , "/general", "/shop", "/profile", "/service", "/location", "/projects", "/contact"];
 
   const showHeader = !noHeaderRoutes.includes(pathname);
   const showHeaderScreenModulo = !noHeaderScreenModuloRoutes.includes(pathname);
-  const showHeaderScreenStep = !noHeaderSteppersRoutes.includes(pathname);
+  // const showHeaderScreenStep = !noHeaderSteppersRoutes.includes(pathname);
 
 
   return (
@@ -32,7 +32,7 @@ export default function RootLayout({
       <body>
         {showHeader && <Header />}
         {showHeaderScreenModulo && <HeaderScreenModulo />}
-        {showHeaderScreenStep && <HeaderScreenStep etapaConcluida={0} />}
+        {/* {showHeaderScreenStep && <HeaderScreenStep etapaConcluida={0} />} */}
         {children}
         <ToastContainer />
       </body>
