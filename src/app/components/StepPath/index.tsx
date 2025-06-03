@@ -27,7 +27,6 @@ export const StepPath = () => {
         try {
           const decoded = jwtDecode<JwtPayload>(token);
           const userId = decoded.id;
-        //  console.log("ID do usuário:", userId);
   
           const response = await fetch(`http://localhost:8080/users/${userId}`, {
             headers: {
@@ -61,7 +60,6 @@ export const StepPath = () => {
       }
 
       const userCategoryData = await response.json();
-      // console.log("Categoria do usuário:", userCategoryData.idCategoria);
       setUserCategoryId(userCategoryData.idCategoria);
     } catch (error) {
       console.error("Erro ao buscar categoria:", error);
@@ -149,34 +147,42 @@ useEffect(() => {
         ))}
 
         <div className="flex items-center flex-col">
-          {modulos.slice(0, 4).map((modulo, index) => (
-            <div key={modulo.id} className="flex items-center flex-col relative group mb-10">
-              <div className="absolute top-0 left-full ml-4 w-max">
-                <p className={`text-[10px] font-semibold ${modulo.status === 'CONCLUIDO' ? 'text-green-400' : 'text-gray-400'}`}>
-                  Missão {index + 1}
-                </p>
-                <h6 className={`text-sm font-bold ${modulo.status === 'CONCLUIDO' ? 'text-green-700' : 'text-gray-400'}`}>
-                  {modulo.nomeModulo}
-                </h6>
-                <p className={`text-xs font-semibold ${modulo.status === 'CONCLUIDO' ? 'text-green-600' : 'text-gray-400'}`}>
-                  {modulo.status === 'CONCLUIDO' ? 'Concluída' : 'Pendente'}
-                </p>
-              </div>
+          <div className="flex items-center flex-col">
+        {modulos.length < 4 ? (
+          <p className="text-red-500 font-semibold text-center">
+            🚧 A trilha ainda não está pronta para você. Aguarde a liberação de novos módulos.
+          </p>
+      ) : (
+      modulos.slice(0, 4).map((modulo, index) => (
+        <div key={modulo.id} className="flex items-center flex-col relative group mb-10">
+          <div className="absolute top-0 left-full ml-4 w-max">
+            <p className={`text-[10px] font-semibold ${modulo.status === 'CONCLUIDO' ? 'text-green-400' : 'text-gray-400'}`}>
+              Missão {index + 1}
+            </p>
+            <h6 className={`text-sm font-bold ${modulo.status === 'CONCLUIDO' ? 'text-green-700' : 'text-gray-400'}`}>
+              {modulo.nomeModulo}
+            </h6>
+            <p className={`text-xs font-semibold ${modulo.status === 'CONCLUIDO' ? 'text-green-600' : 'text-gray-400'}`}>
+              {modulo.status === 'CONCLUIDO' ? 'Concluída' : 'Pendente'}
+            </p>
+          </div>
 
-              <div className={`w-10 h-10 border-2 rounded-full flex items-center justify-center shadow-md
-                ${modulo.status === 'CONCLUIDO' ? 'border-green-600 bg-green-100' : 'border-gray-300 bg-gray-100'}`}>
-                {modulo.status === 'CONCLUIDO' ? (
-                  <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.285 6.709l-11.025 11.025-5.286-5.286 1.414-1.414 3.872 3.872 9.611-9.611z" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="5" />
-                  </svg>
-                )}
-              </div>
-            </div>
-          ))}
+          <div className={`w-10 h-10 border-2 rounded-full flex items-center justify-center shadow-md
+            ${modulo.status === 'CONCLUIDO' ? 'border-green-600 bg-green-100' : 'border-gray-300 bg-gray-100'}`}>
+            {modulo.status === 'CONCLUIDO' ? (
+              <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.285 6.709l-11.025 11.025-5.286-5.286 1.414-1.414 3.872 3.872 9.611-9.611z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5" />
+              </svg>
+            )}
+          </div>
+        </div>
+    ))
+  )}
+</div>
         </div>
 
         <div className="mt-6 bg-gray-100 px-4 py-2 rounded-lg text-center text-sm text-gray-700 shadow-sm">
