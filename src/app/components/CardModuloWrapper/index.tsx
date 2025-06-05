@@ -37,7 +37,8 @@ const CardModuloWrapper: React.FC<CardModuloWrapperProps> = ({
         const res = await fetch(`http://localhost:8080/modulos/${moduloSelecionado}/documentos`)
         if (!res.ok) throw new Error('Erro ao buscar módulos')
         const data = await res.json()
-        setModulos(data)
+        console.log(data)
+        setModulos(data);
       } catch (err: any) {
         setError(err.message || 'Erro desconhecido')
       } finally {
@@ -149,7 +150,6 @@ const CardModuloWrapper: React.FC<CardModuloWrapperProps> = ({
               </div>
             )}
 
-            {/* Efeito decorativo */}
             <div className="absolute -top-5 -right-5 w-20 h-20 bg-blue-300 opacity-10 rounded-full animate-ping"></div>
           </div>
         </div>

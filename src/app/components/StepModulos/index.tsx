@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 type HeaderScreenStepProps = {
   etapaConcluida: number;
   onSelecionarModulo: (id: number) => void;
+
 };
 
 export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, onSelecionarModulo }) => {
@@ -111,12 +112,11 @@ export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, o
             {isUnlocked ? (
               <button
                 onClick={() => {
-                console.log("Clique no botão - passando módulo:", modulo.order)
-                onSelecionarModulo(modulo.order)
+                onSelecionarModulo(modulo.idModulo)
             }}
                 className="flex items-center gap-2 font-bold text-[15px] hover:text-[#BC1F1B]"
               >
-                {modulo.nomeModulo || `Módulo ${modulo.order}`}
+                {modulo.nomeModulo}
               </button>
             ) : (
               <span
