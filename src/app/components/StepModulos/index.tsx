@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 
 type HeaderScreenStepProps = {
   etapaConcluida: number;
-  onSelecionarModulo: (order: number) => void;
+  onSelecionarModulo: (id: number) => void;
 };
 
 export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, onSelecionarModulo }) => {
