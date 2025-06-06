@@ -99,6 +99,13 @@ export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, o
     fetchModulosPath();
   }, [pathUserId]);
 
+    useEffect(() => {
+      if (modulos.length > 0) {
+        onSelecionarModulo(modulos[0].idModulo);
+      }
+    }, [modulos]);
+
+
   return (
     <header className="mt-6 py-4 px-4 font-poppins sm:px-10 bg-transparent min-h-[70px] tracking-wide relative z-50 w-full mx-auto">
       <div className="flex flex-wrap items-center justify-center gap-10 w-full sm:w-[50%] mx-auto rounded-full">
