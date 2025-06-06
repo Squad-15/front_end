@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation'; // importar useRouter
+import { useSearchParams, useRouter } from 'next/navigation';
 
 declare global {
   interface Window {
@@ -34,43 +34,59 @@ const convertToVideoId = (url: string | null): string => {
 
 const VideoSection: React.FC = () => {
   const searchParams = useSearchParams();
-  const router = useRouter(); // chama useRouter
+  const router = useRouter();
   const urlVideo = searchParams.get('urlVideo');
   const videoId = convertToVideoId(urlVideo);
 
   const [videoEnded, setVideoEnded] = useState(false);
-  const playerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<any>(null);
 
   useEffect(() => {
     if (!videoId) return;
 
-    // Carrega a API do YouTube (apenas uma vez)
     const existingScript = document.getElementById('youtube-api');
-    if (!existingScript) {
-      const tag = document.createElement('script');
-      tag.id = 'youtube-api';
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.body.appendChild(tag);
-    }
 
-    // Callback quando a API estiver pronta
-    window.onYouTubeIframeAPIReady = () => {
-      new window.YT.Player('yt-player', {
+    const createPlayer = () => {
+      if (playerRef.current) {
+        // Se já existe player, destrói ele antes de criar novo
+        playerRef.current.destroy();
+      }
+
+      playerRef.current = new window.YT.Player('yt-player', {
         videoId,
         events: {
           onStateChange: (event: any) => {
             if (event.data === window.YT.PlayerState.ENDED) {
-              setVideoEnded(true); // libera botão
+              setVideoEnded(true);
             }
           },
         },
       });
     };
+
+    if (existingScript && window.YT && window.YT.Player) {
+      createPlayer();
+    } else {
+      const tag = document.createElement('script');
+      tag.id = 'youtube-api';
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+
+      window.onYouTubeIframeAPIReady = () => {
+        createPlayer();
+      };
+    }
+
+    // Cleanup: destrói o player quando o componente desmontar
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
+    };
   }, [videoId]);
 
   const handleConclusao = () => {
-    // Aqui você redireciona para a página desejada
-    router.push('/modulo'); // troque "/modulo" pela rota que quiser
+    router.push('/modulo');
   };
 
   if (!videoId) {
@@ -79,13 +95,13 @@ const VideoSection: React.FC = () => {
 
   return (
     <section className="max-w-2xl px-4 py-4 mx-auto bg-white dark:bg-gray-900 flex flex-col items-center">
-      <div ref={playerRef} className="w-full my-10">
+      <div className="w-full my-10">
         <div id="yt-player" className="w-full h-64 md:h-96 rounded-lg"></div>
       </div>
 
       <button
         disabled={!videoEnded}
-        onClick={handleConclusao} // chama a função aqui
+        onClick={handleConclusao}
         className={`px-6 py-2 rounded text-white transition ${
           videoEnded ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-400 cursor-not-allowed'
         }`}
