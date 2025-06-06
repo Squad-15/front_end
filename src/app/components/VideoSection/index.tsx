@@ -1,50 +1,97 @@
 'use client';
-import React from "react";
+import React, { useEffect, useRef, useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation'; // importar useRouter
 
-interface VideoSectionProps {
-  youtubeUrl: string;
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
 }
 
-const convertToEmbedUrl = (url: string): string => {
-  if (!url || typeof url !== "string") return "";
+const convertToVideoId = (url: string | null): string => {
+  if (!url || typeof url !== 'string') return '';
 
   try {
-    const fixedUrl = url.startsWith("http") ? url : `https://${url}`;
+    const fixedUrl = url.startsWith('http') ? url : `https://${url}`;
     const urlObj = new URL(fixedUrl);
-    let videoId = "";
+    let videoId = '';
 
-    if (urlObj.hostname === "youtu.be") {
+    if (urlObj.hostname === 'youtu.be') {
       videoId = urlObj.pathname.slice(1);
     } else if (
-      urlObj.hostname.includes("youtube.com") &&
-      urlObj.searchParams.get("v")
+      urlObj.hostname.includes('youtube.com') &&
+      urlObj.searchParams.get('v')
     ) {
-      videoId = urlObj.searchParams.get("v")!;
+      videoId = urlObj.searchParams.get('v')!;
     }
 
-    return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
+    return videoId;
   } catch {
-    return "";
+    return '';
   }
 };
 
-const VideoSection: React.FC<VideoSectionProps> = ({ youtubeUrl }) => {
-  const embedUrl = convertToEmbedUrl(youtubeUrl);
+const VideoSection: React.FC = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter(); // chama useRouter
+  const urlVideo = searchParams.get('urlVideo');
+  const videoId = convertToVideoId(urlVideo);
 
-  if (!embedUrl) {
-    return <p className="text-red-600">Invalid YouTube URL</p>;
+  const [videoEnded, setVideoEnded] = useState(false);
+  const playerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!videoId) return;
+
+    // Carrega a API do YouTube (apenas uma vez)
+    const existingScript = document.getElementById('youtube-api');
+    if (!existingScript) {
+      const tag = document.createElement('script');
+      tag.id = 'youtube-api';
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+    }
+
+    // Callback quando a API estiver pronta
+    window.onYouTubeIframeAPIReady = () => {
+      new window.YT.Player('yt-player', {
+        videoId,
+        events: {
+          onStateChange: (event: any) => {
+            if (event.data === window.YT.PlayerState.ENDED) {
+              setVideoEnded(true); // libera botão
+            }
+          },
+        },
+      });
+    };
+  }, [videoId]);
+
+  const handleConclusao = () => {
+    // Aqui você redireciona para a página desejada
+    router.push('/modulo'); // troque "/modulo" pela rota que quiser
+  };
+
+  if (!videoId) {
+    return <p className="text-red-600">URL do vídeo inválida</p>;
   }
 
   return (
-    <section className="max-w-2xl px-0 py-0 mx-auto bg-white dark:bg-gray-900">
-      <iframe
-        className="w-full h-64 my-10 rounded-lg md:h-96"
-        src={embedUrl}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      ></iframe>
+    <section className="max-w-2xl px-4 py-4 mx-auto bg-white dark:bg-gray-900 flex flex-col items-center">
+      <div ref={playerRef} className="w-full my-10">
+        <div id="yt-player" className="w-full h-64 md:h-96 rounded-lg"></div>
+      </div>
+
+      <button
+        disabled={!videoEnded}
+        onClick={handleConclusao} // chama a função aqui
+        className={`px-6 py-2 rounded text-white transition ${
+          videoEnded ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-400 cursor-not-allowed'
+        }`}
+      >
+        Marcar como concluído
+      </button>
     </section>
   );
 };

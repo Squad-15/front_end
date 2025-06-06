@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import "/public/styles/modulo.css";
+import { useRouter } from 'next/navigation'
 
 type Modulo = {
   id: number;
@@ -25,6 +26,12 @@ const CardModuloWrapper: React.FC<CardModuloWrapperProps> = ({
   const [modulos, setModulos] = useState<Modulo[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
+
+  const router = useRouter();
+
+  const handleAssistirAgora = (modulo: Modulo) => {
+    router.push(`/video?urlVideo=${encodeURIComponent(modulo.urlVideo)}`);
+  };
 
   useEffect(() => {
     if (moduloSelecionado === null || moduloSelecionado === undefined) return;
@@ -131,9 +138,9 @@ const CardModuloWrapper: React.FC<CardModuloWrapperProps> = ({
               <hr className="my-3 border-t border-gray-300" />
             </div>
 
-            {etapaConcluida >= modulo.order && (
+              {etapaConcluida >= modulo.order && (
               <div className="flex gap-4">
-                <a href={`/video`} className="watchVideo">
+                <a className="watchVideo" onClick={() => handleAssistirAgora(modulo)}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -149,6 +156,7 @@ const CardModuloWrapper: React.FC<CardModuloWrapperProps> = ({
                 </a>
               </div>
             )}
+
 
             <div className="absolute -top-5 -right-5 w-20 h-20 bg-blue-300 opacity-10 rounded-full animate-ping"></div>
           </div>
