@@ -8,12 +8,16 @@ type HeaderScreenStepProps = {
   onSelecionarModulo: (id: number) => void;
 };
 
-export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, onSelecionarModulo }) => {
+export const StepModulos: React.FC<HeaderScreenStepProps> = ({
+  etapaConcluida,
+  onSelecionarModulo,
+}) => {
   const [userId, setUserId] = useState<string | null>(null);
   const [userCategoryId, setUserCategoryId] = useState<string | null>(null);
   const [pathUserId, setPathUserId] = useState<string | null>(null);
   const [modulos, setModulos] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // estado do loading
+  const [moduloSelecionado, setModuloSelecionado] = useState<number | null>(null); // 🔸
+  const [isLoading, setIsLoading] = useState(true);
 
   function getCookie(name: string): string | null {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -22,7 +26,7 @@ export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, o
 
   useEffect(() => {
     async function fetchUser() {
-      const token = getCookie("token");
+      const token = getCookie('token');
       if (!token) return;
 
       try {
@@ -39,10 +43,10 @@ export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, o
           const data = await response.json();
           setUserId(data.id);
         } else {
-          console.error("Erro na requisição:", response.status);
+          console.error('Erro na requisição:', response.status);
         }
       } catch (error) {
-        console.error("Erro ao buscar usuário:", error);
+        console.error('Erro ao buscar usuário:', error);
       }
     }
 
@@ -56,14 +60,14 @@ export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, o
       try {
         const response = await fetch(`http://localhost:8080/user/${userId}/categoria`);
         if (!response.ok) {
-          console.error("Erro ao buscar categoria do usuário");
+          console.error('Erro ao buscar categoria do usuário');
           return;
         }
 
         const userCategoryData = await response.json();
         setUserCategoryId(userCategoryData.idCategoria);
       } catch (error) {
-        console.error("Erro ao buscar categoria:", error);
+        console.error('Erro ao buscar categoria:', error);
       }
     }
 
@@ -83,16 +87,16 @@ export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, o
       try {
         const response = await fetch(`http://localhost:8080/trilhas/${pathUserId}/modulos`);
         if (!response.ok) {
-          console.log("Erro ao buscar módulos relacionados à trilha do usuário");
+          console.log('Erro ao buscar módulos relacionados à trilha do usuário');
           return;
         }
 
         const modulosResponseData = await response.json();
         setModulos(modulosResponseData);
       } catch (e) {
-        console.log("Erro ao buscar módulos:", e);
+        console.log('Erro ao buscar módulos:', e);
       } finally {
-        setIsLoading(false); // finaliza o loading
+        setIsLoading(false);
       }
     }
 
@@ -101,11 +105,12 @@ export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, o
 
   useEffect(() => {
     if (modulos.length > 0) {
-      onSelecionarModulo(modulos[0].idModulo);
+      const primeiroId = modulos[0].idModulo;
+      setModuloSelecionado(primeiroId);
+      onSelecionarModulo(primeiroId);
     }
   }, [modulos]);
 
-  // Loader gamificado
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center h-60 w-full">
@@ -129,16 +134,23 @@ export const StepModulos: React.FC<HeaderScreenStepProps> = ({ etapaConcluida, o
         <nav className="lg:flex lg:gap-x-8 max-lg:flex max-lg:flex-col max-lg:items-center">
           <ul className="flex gap-x-8 text-center">
             {modulos.map((modulo) => {
-              const isUnlocked = true; // ajustar conforme regra depois
+              const isUnlocked = true;
+              const isActive = moduloSelecionado === modulo.idModulo;
 
               return (
                 <li key={modulo.id}>
                   {isUnlocked ? (
                     <button
                       onClick={() => {
+                        setModuloSelecionado(modulo.idModulo);
                         onSelecionarModulo(modulo.idModulo);
                       }}
-                      className="flex items-center gap-2 font-bold text-[15px] hover:text-[#BC1F1B]"
+                      className={`flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-full transition-all duration-300
+                        ${
+                          isActive
+                            ? 'bg-gradient-to-r from-[#FF512F] to-[#DD2476] text-white shadow-lg shadow-[#FF512F]/40 border-b-4 border-yellow-300'
+                            : 'text-zinc-700 hover:text-[#BC1F1B]'
+                        }`}
                     >
                       {modulo.nomeModulo}
                     </button>

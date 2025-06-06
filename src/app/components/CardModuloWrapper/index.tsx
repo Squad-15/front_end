@@ -11,7 +11,6 @@ type Modulo = {
   description: string;
   urlPicture: string;
   amountPoints: number;
-  // outros campos que a API retornar...
 }
 
 type CardModuloWrapperProps = {
