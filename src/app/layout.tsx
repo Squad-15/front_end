@@ -5,7 +5,6 @@ import { Header } from "./components/Header";
 import { ToastContainer } from 'react-toastify';
 import "./globals.css";
 import { HeaderScreenModulo } from "./components/HeaderScreenModulo";
-// import { HeaderScreenStep } from "./components/StepModulos";
 
 export default function RootLayout({
   children,
@@ -32,7 +31,6 @@ export default function RootLayout({
       <body>
         {showHeader && <Header />}
         {showHeaderScreenModulo && <HeaderScreenModulo />}
-        {/* {showHeaderScreenStep && <HeaderScreenStep etapaConcluida={0} />} */}
         {children}
         <ToastContainer />
       </body>
