@@ -18,7 +18,7 @@ export default function ManageCourses() {
   const [cursos, setCursos] = useState<Course[]>([]);
   const [search, setSearch] = useState("");
   const [type, setType] = useState("");
-  const [status, setStatus] = useState("");
+  const [ordem, setOrdem] = useState("");
   const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -43,13 +43,13 @@ export default function ManageCourses() {
   // Filtragem com base nos campos
   const filteredCursos = cursos.filter((curso) => {
     const matchesSearch =
-      curso.titulo.toLowerCase().includes(debouncedSearch.toLowerCase());
+    curso.titulo.toLowerCase().includes(debouncedSearch.toLowerCase());
 
     const matchesType = type ? curso.tipo.toLowerCase() === type.toLowerCase() : true;
 
-    const matchesStatus = status
-      ? curso.status?.toLowerCase() === status.toLowerCase()
-      : true;
+      const matchesStatus = ordem
+    ? curso.ordem === Number(ordem)
+    : true;
 
     const matchesCategory = category
       ? curso.category?.toLowerCase() === category.toLowerCase()
@@ -65,13 +65,13 @@ export default function ManageCourses() {
         setSearch={setSearch}
         type={type}
         setType={setType}
-        status={status}
-        setStatus={setStatus}
+        ordem={ordem}
+        setOrdem={setOrdem}
         category={category}
         setCategory={setCategory}
       />
       {loading ? (
-          <p className="text-center text-gray-600 mt-4">Carregando cursos...</p>
+          <p className="text-center text-gray-600 mt-4">Carregando...</p>
         ) : filteredCursos.length === 0 ? (
           <p className="text-center text-gray-500 mt-6">Nenhum resultado foi encontrado.</p>
         ) : (

@@ -6,8 +6,8 @@ interface CourseHeaderProps {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   type: string;
   setType: React.Dispatch<React.SetStateAction<string>>;
-  status: string;
-  setStatus: React.Dispatch<React.SetStateAction<string>>;
+  ordem: number;
+  setOrdem: React.Dispatch<React.SetStateAction<string>>;
   category: string;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -17,8 +17,8 @@ export const CourseHeader = ({
   setSearch,
   type,
   setType,
-  status,
-  setStatus,
+  ordem,
+  setOrdem,
   category,
   setCategory,
 }: CourseHeaderProps) => {
@@ -34,7 +34,7 @@ export const CourseHeader = ({
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <input
           type="text"
-          placeholder="Buscar por título ou código..."
+          placeholder="Buscar por título..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="col-span-1 md:col-span-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -52,14 +52,15 @@ export const CourseHeader = ({
         </select>
 
         <select
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
+          value={ordem}
+          onChange={(e) => setOrdem(e.target.value)}
           className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">Status</option>
-          <option value="ativo">Ativo</option>
-          <option value="inativo">Inativo</option>
-          <option value="andamento">Em andamento</option>
+          <option value="">Ordem</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
         </select>
 
         <select
