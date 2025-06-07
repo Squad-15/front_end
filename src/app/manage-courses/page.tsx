@@ -2,44 +2,7 @@
 import { useEffect, useState } from "react";
 import { CourseHeader } from "../components/CourseHeader";
 import { CourseList } from "../components/CourseList";
-// import { CourseUsers } from "../components/CourseUsers";
-
-// const cursosExemplo = [
-//   {
-//     id: 1,
-//     titulo: "Curso de React Avançado",
-//     categoria: "Tecnologia",
-//     tipo: "Online",
-//     descricao: "Aprenda React com práticas modernas e hooks.",
-//     status: "Ativo",
-//     url_photo: "https://img.youtube.com/vi/hdI2bqOjy3c/hqdefault.jpg"
-//   },
-//   {
-//     id: 2,
-//     titulo: "Gestão de Equipes",
-//     categoria: "Liderança",
-//     tipo: "Presencial",
-//     descricao: "Desenvolva habilidades de liderança e comunicação.",
-//     status: "Inativo",
-//     url_photo: ""
-//   }
-// ];
-
-const alunos = [
-  {
-    id: 1,
-    nome: "Maria Oliveira",
-    email: "maria@exemplo.com",
-    progresso: 80,
-    avatar: "",
-  },
-  {
-    id: 2,
-    nome: "Carlos Souza",
-    email: "carlos@exemplo.com",
-    progresso: 45,
-  },
-];
+import { useDebounce } from "../hooks/usedebouce";
 
 interface Course {
   id: number;
@@ -52,44 +15,68 @@ interface Course {
 }
 
 export default function ManageCourses() {
-
   const [cursos, setCursos] = useState<Course[]>([]);
+  const [search, setSearch] = useState("");
+  const [type, setType] = useState("");
+  const [status, setStatus] = useState("");
+  const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(true);
 
+  const debouncedSearch = useDebounce(search, 500);
+
   useEffect(() => {
-  async function fetchCursos() {
-    try {
-      const response = await fetch("http://localhost:8080/document");
-      const data = await response.json();
-      setCursos(data);
-    } catch (error) {
-      console.error("Erro ao carregar cursos", error);
-    } finally {
-      setLoading(false);
+    async function fetchCursos() {
+      try {
+        const response = await fetch("http://localhost:8080/document");
+        const data = await response.json();
+        setCursos(data);
+      } catch (error) {
+        console.error("Erro ao carregar cursos", error);
+      } finally {
+        setLoading(false);
+      }
     }
-  }
 
-  fetchCursos();
-}, []);
+    fetchCursos();
+  }, []);
 
-    return(
-        // <div>
-        //     <CourseHeader />
-        //     <CourseList cursos={cursosExemplo} />
-        //     <CourseUsers
-        //         usuarios={alunos}
-        //         onRemoverUsuario={(id) => console.log("Remover aluno", id)}
-        //         onAdicionarUsuario={() => console.log("Adicionar novo aluno")}
-        //     />
-        // </div>
+  // Filtragem com base nos campos
+  const filteredCursos = cursos.filter((curso) => {
+    const matchesSearch =
+      curso.titulo.toLowerCase().includes(debouncedSearch.toLowerCase());
 
-        <div>
-      <CourseHeader />
-          {loading ? (
-            <p className="text-center text-gray-600 mt-4">Carregando cursos...</p>
-          ) : (
-            <CourseList cursos={cursos} />
-          )}
+    const matchesType = type ? curso.tipo.toLowerCase() === type.toLowerCase() : true;
+
+    const matchesStatus = status
+      ? curso.status?.toLowerCase() === status.toLowerCase()
+      : true;
+
+    const matchesCategory = category
+      ? curso.category?.toLowerCase() === category.toLowerCase()
+      : true;
+
+    return matchesSearch && matchesType && matchesStatus && matchesCategory;
+  });
+
+  return (
+    <div>
+      <CourseHeader
+        search={search}
+        setSearch={setSearch}
+        type={type}
+        setType={setType}
+        status={status}
+        setStatus={setStatus}
+        category={category}
+        setCategory={setCategory}
+      />
+      {loading ? (
+          <p className="text-center text-gray-600 mt-4">Carregando cursos...</p>
+        ) : filteredCursos.length === 0 ? (
+          <p className="text-center text-gray-500 mt-6">Nenhum resultado foi encontrado.</p>
+        ) : (
+          <CourseList cursos={filteredCursos} />
+        )}
     </div>
-    );
+  );
 }
