@@ -1,5 +1,6 @@
 import { InformationsAboutPlataform } from "../components/InformationsAboutPlataform";
 import { ListCourses } from "../components/ListCourses";
+import { ListTracks } from "../components/ListTracks";
 import { ListUsers } from "../components/ListUsers";
 
 export default function Dashboard() {
@@ -12,6 +13,7 @@ export default function Dashboard() {
           <div>
             <ListUsers />
             <ListCourses />
+            <ListTracks />
           </div>
         </>
   );
