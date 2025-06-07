@@ -13,7 +13,7 @@ export const CourseHeader = () => {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4">
         <h2 className="text-2xl font-semibold text-gray-800">📚 Gerenciar Cursos</h2>
         <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-medium transition">
-          + Criar novo curso
+          + Criar novo
         </button>
       </div>
 

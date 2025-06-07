@@ -45,16 +45,11 @@ export const ListCourses = () => {
               Cursos de Treinamento
             </h2>
 
-          <div className="flex gap-2">
-            <button className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">
-              <IoCreateOutline size={20} />
-              <span className="font-medium">Criar Novo</span>
-            </button>
-
-            <button className="flex items-center gap-2 bg-[#60A5FA] hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition">
+          <div className="flex gap-2">         
+            <a href="/manage-courses" className="flex items-center gap-2 bg-[#60A5FA] hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition">
               <IoBookOutline size={20} />
               <span className="font-medium">Gerenciar Cursos</span>
-            </button>
+            </a>
           </div>
           </header>
 
