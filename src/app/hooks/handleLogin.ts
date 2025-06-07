@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie'
+import { jwtDecode } from 'jwt-decode'
+
+type DataUser = {
+  roleUser: string;
+}
 
 export function useLogin() {
   const [matricula, setMatricula] = useState<string>('')
@@ -43,9 +48,26 @@ export function useLogin() {
         })
       }
 
+      const decodedToken = jwtDecode(data.token) as DataUser
+      const role = decodedToken.roleUser;
+
+      console.log(role)
+
+    if (!role) {
+      throw new Error('Função do usuário não encontrada no token.')
+    }
+
+    setUser(data)
+    setIsRedirecting(true)
+
+    if (role === 'ADMINISTRADOR' || role === 'GESTOR') {
+      window.location.href = '/dashboard'
+    } else {
+      window.location.href = '/modulo'
+    }
+
       setUser(data)
       setIsRedirecting(true);
-      window.location.href = '/modulo'
     } catch (err) {
       setMatricula('')
       setPassword('')

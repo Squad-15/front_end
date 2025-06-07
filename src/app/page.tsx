@@ -1,7 +1,5 @@
 "use client";
 
-// Preciso ver aqui a questão do redirecionamento de sessão expirada
-
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
@@ -24,9 +22,6 @@ export default function HomeClient() {
     if (params.get("sessionExpired")) {
       toast.error("Sua sessão expirou. Por favor, faça login novamente.");
       console.log("Sessão expirada.");
-
-      // // Remove o query param da URL sem reload
-      // router.replace(window.location.pathname);
 
       setTimeout(() => {
         router.replace(window.location.pathname);
