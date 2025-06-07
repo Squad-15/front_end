@@ -65,7 +65,7 @@ const ManageContributorsLink = ({ isColaboradoresOpen, setIsColaboradoresOpen }:
 
         <li>
           <a
-            href="#"
+            href="/register"
             className="text-slate-800 text-[15px] font-medium block cursor-pointer hover:bg-gray-100 rounded-md px-3 py-2 transition-all duration-300"
           >
             <span>Cadastrar colaborador</span>
