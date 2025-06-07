@@ -10,6 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { HeroPrinciple } from "./components/HeroPrinciple";
 import { SectionAbout } from "./components/SectionAbout";
 import { SectionBenefits } from "./components/SectionBenefits";
+import CursosSection from "./components/CursosSection";
+import { SectionAccessAnywhere } from "./components/SectionAccessAnywhere";
+import DepoimentoSection from "./components/DepoimentoSection";
+import ContatoSection from "./components/ContatoSection";
+import Footer from "./components/footer";
 
 export default function HomeClient() {
   const router = useRouter();
@@ -35,21 +40,11 @@ export default function HomeClient() {
       <HeroPrinciple />
       <SectionAbout />
       <SectionBenefits />
+      <CursosSection />
+      <SectionAccessAnywhere />
+      <DepoimentoSection />
+      <ContatoSection />
+      <Footer />
     </>
   );
 }
-
-
-// import { HeroPrinciple } from "./components/HeroPrinciple";
-// import { SectionAbout } from "./components/SectionAbout";
-// import { SectionBenefits } from "./components/SectionBenefits";
-
-// export default function Home() {
-//     return (
-//         <>
-//         <HeroPrinciple />
-//         <SectionAbout />
-//         <SectionBenefits />
-//         </>
-//     );
-// }

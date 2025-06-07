@@ -1,150 +1,127 @@
 import React from 'react'
-import logo from '/public/assets/img/logo.png'
 
 const Footer = () => {
   return (
-    <footer className="bg-white" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-12 lg:px-8 lg:pt-25">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="space-y-8">
-            <img className="h-12 w-auto" src={logo.src} alt="Logo" />
-            <p className="text-sm leading-6 text-gray-600">
-              Construíndo um futuro com excelência
-            </p>
-            <div className="flex space-x-6">
-              {/* Facebook */}
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">Facebook</span>
-                <svg
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                  />
-                </svg>
-              </a>
-
-              {/* Instagram */}
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">Instagram</span>
-                <svg
-                  className="h-6 w-6"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.17.056 1.97.24 2.43.403a4.919 4.919 0 0 1 1.675 1.088 4.919 4.919 0 0 1 1.088 1.675c.163.46.347 1.26.403 2.43.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.056 1.17-.24 1.97-.403 2.43a4.902 4.902 0 0 1-1.088 1.675 4.918 4.918 0 0 1-1.675 1.088c-.46.163-1.26.347-2.43.403-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.17-.056-1.97-.24-2.43-.403a4.919 4.919 0 0 1-1.675-1.088 4.919 4.919 0 0 1-1.088-1.675c-.163-.46-.347-1.26-.403-2.43-.058-1.265-.07-1.645-.07-4.849s.012-3.584.07-4.849c.056-1.17.24-1.97.403-2.43a4.919 4.919 0 0 1 1.088-1.675 4.919 4.919 0 0 1 1.675-1.088c.46-.163 1.26-.347 2.43-.403 1.265-.058 1.645-.07 4.849-.07zm0 1.838c-3.154 0-3.508.012-4.743.069-1.016.047-1.566.215-1.93.36-.486.189-.832.416-1.198.782a3.919 3.919 0 0 0-.782 1.198c-.145.364-.313.914-.36 1.93-.057 1.235-.069 1.589-.069 4.743s.012 3.508.069 4.743c.047 1.016.215 1.566.36 1.93.189.486.416.832.782 1.198.366.366.712.593 1.198.782.364.145.914.313 1.93.36 1.235.057 1.589.069 4.743.069s3.508-.012 4.743-.069c1.016-.047 1.566-.215 1.93-.36a3.919 3.919 0 0 0 1.198-.782 3.919 3.919 0 0 0 .782-1.198c.145-.364.313-.914.36-1.93.057-1.235.069-1.589.069-4.743s-.012-3.508-.069-4.743c-.047-1.016-.215-1.566-.36-1.93a3.919 3.919 0 0 0-.782-1.198 3.919 3.919 0 0 0-1.198-.782c-.364-.145-.914-.313-1.93-.36-1.235-.057-1.589-.069-4.743-.069zm0 3.838a5.999 5.999 0 1 1 0 12 5.999 5.999 0 0 1 0-12zm0 9.838a3.84 3.84 0 1 0 0-7.679 3.84 3.84 0 0 0 0 7.679zm6.406-10.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z" />
-                </svg>
-              </a>
-
-              {/* WhatsApp */}
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">WhatsApp</span>
-                <svg
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 32 32"
-                  aria-hidden="true"
-                >
-                  <path d="M16.005 2.002a13.97 13.97 0 0 0-11.99 21.28l-2.007 6.087 6.25-1.958a13.97 13.97 0 1 0 7.747-25.41Zm0 25.464a11.5 11.5 0 0 1-5.888-1.604l-.422-.248-3.717 1.164 1.197-3.636-.274-.44a11.49 11.49 0 1 1 9.104 4.764Zm6.304-8.605c-.34-.17-2.01-.993-2.32-1.106-.31-.113-.54-.17-.77.17s-.88 1.106-1.08 1.335c-.2.227-.4.256-.74.085-.34-.17-1.43-.527-2.72-1.683-1.004-.898-1.68-2.007-1.88-2.35-.2-.34-.02-.523.15-.693.155-.154.34-.397.51-.596.17-.2.23-.34.34-.567.113-.227.057-.426-.03-.597-.086-.17-.77-1.857-1.05-2.547-.275-.662-.55-.57-.77-.58l-.654-.012c-.23 0-.596.085-.907.426s-1.19 1.16-1.19 2.83c0 1.67 1.217 3.28 1.385 3.508.17.227 2.4 3.652 5.82 5.12.813.35 1.447.558 1.94.714.815.26 1.56.223 2.15.135.657-.098 2.01-.82 2.3-1.61.284-.79.284-1.465.2-1.61-.085-.14-.31-.227-.65-.396Z" />
-                </svg>
-              </a>
-
-              {/* YouTube */}
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">YouTube</span>
-                <svg
-                  className="h-6 w-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
-                  />
-                </svg>
-              </a>
-            </div>
+    <footer className="tracking-wide bg-gray-50 px-10 pt-12 pb-6">
+      <div className="flex flex-wrap justify-between gap-10">
+        <div className="max-w-md">
+          <a href='javascript:void(0)'>
+            <img src="assets/img/logo.png" alt="logo" className="w-36" />
+          </a>
+          <div className="mt-6">
+            <p className="text-slate-600 leading-relaxed text-sm">Constuindo o futuro com excelência</p>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            {/* Links */}
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                  Links úteis
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {['Sobre nós', 'Eventos', 'Blog', 'FAQ'].map(
-                    (item) => (
-                      <li key={item}>
-                        <a
-                          href="#"
-                          className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                        >
-                          {item}
-                        </a>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                  Menu Principal
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {['Home', 'Depoimentos', 'Nossa missão', 'Política'].map(
-                    (item) => (
-                      <li key={item}>
-                        <a
-                          href="#"
-                          className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                        >
-                          {item}
-                        </a>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </div>
-            </div>
-            {/* Company and Legal */}
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                  Nosso Contato
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {['example@email.com', '+55 958 248 966', 'Redes Sociais'].map(
-                    (item) => (
-                      <li key={item}>
-                        <a
-                          href="#"
-                          className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                        >
-                          {item}
-                        </a>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </div>
-            </div>
-          </div>
+          <ul className="mt-10 flex space-x-5">
+            <li>
+              <a href='javascript:void(0)'>
+                <svg xmlns="http://www.w3.org/2000/svg" className="fill-blue-600 w-8 h-8" viewBox="0 0 49.652 49.652">
+                  <path d="M24.826 0C11.137 0 0 11.137 0 24.826c0 13.688 11.137 24.826 24.826 24.826 13.688 0 24.826-11.138 24.826-24.826C49.652 11.137 38.516 0 24.826 0zM31 25.7h-4.039v14.396h-5.985V25.7h-2.845v-5.088h2.845v-3.291c0-2.357 1.12-6.04 6.04-6.04l4.435.017v4.939h-3.219c-.524 0-1.269.262-1.269 1.386v2.99h4.56z" data-original="#000000" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href='javascript:void(0)'>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 112.196 112.196">
+                  <circle cx="56.098" cy="56.097" r="56.098" fill="#007ab9" data-original="#007ab9" />
+                  <path fill="#fff" d="M89.616 60.611v23.128H76.207V62.161c0-5.418-1.936-9.118-6.791-9.118-3.705 0-5.906 2.491-6.878 4.903-.353.862-.444 2.059-.444 3.268v22.524h-13.41s.18-36.546 0-40.329h13.411v5.715c-.027.045-.065.089-.089.132h.089v-.132c1.782-2.742 4.96-6.662 12.085-6.662 8.822 0 15.436 5.764 15.436 18.149zm-54.96-36.642c-4.587 0-7.588 3.011-7.588 6.967 0 3.872 2.914 6.97 7.412 6.97h.087c4.677 0 7.585-3.098 7.585-6.97-.089-3.956-2.908-6.967-7.496-6.967zm-6.791 59.77H41.27v-40.33H27.865v40.33z" data-original="#f1f2f2" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href='javascript:void(0)'>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 152 152">
+                  <linearGradient id="a" x1="22.26" x2="129.74" y1="22.26" y2="129.74" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#fae100" />
+                    <stop offset=".15" stop-color="#fcb720" />
+                    <stop offset=".3" stop-color="#ff7950" />
+                    <stop offset=".5" stop-color="#ff1c74" />
+                    <stop offset="1" stop-color="#6c1cd1" />
+                  </linearGradient>
+                  <g data-name="Layer 2">
+                    <g data-name="03.Instagram">
+                      <rect width="152" height="152" fill="url(#a)" data-original="url(#a)" rx="76" />
+                      <g fill="#fff">
+                        <path fill="#ffffff10" d="M133.2 26c-11.08 20.34-26.75 41.32-46.33 60.9S46.31 122.12 26 133.2q-1.91-1.66-3.71-3.46A76 76 0 1 1 129.74 22.26q1.8 1.8 3.46 3.74z" data-original="#ffffff10" />
+                        <path d="M94 36H58a22 22 0 0 0-22 22v36a22 22 0 0 0 22 22h36a22 22 0 0 0 22-22V58a22 22 0 0 0-22-22zm15 54.84A18.16 18.16 0 0 1 90.84 109H61.16A18.16 18.16 0 0 1 43 90.84V61.16A18.16 18.16 0 0 1 61.16 43h29.68A18.16 18.16 0 0 1 109 61.16z" data-original="#ffffff" />
+                        <path d="m90.59 61.56-.19-.19-.16-.16A20.16 20.16 0 0 0 76 55.33 20.52 20.52 0 0 0 55.62 76a20.75 20.75 0 0 0 6 14.61 20.19 20.19 0 0 0 14.42 6 20.73 20.73 0 0 0 14.55-35.05zM76 89.56A13.56 13.56 0 1 1 89.37 76 13.46 13.46 0 0 1 76 89.56zm26.43-35.18a4.88 4.88 0 0 1-4.85 4.92 4.81 4.81 0 0 1-3.42-1.43 4.93 4.93 0 0 1 3.43-8.39 4.82 4.82 0 0 1 3.09 1.12l.1.1a3.05 3.05 0 0 1 .44.44l.11.12a4.92 4.92 0 0 1 1.1 3.12z" data-original="#ffffff" />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href='javascript:void(0)'>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 1227 1227">
+                  <path d="M613.5 0C274.685 0 0 274.685 0 613.5S274.685 1227 613.5 1227 1227 952.315 1227 613.5 952.315 0 613.5 0z" data-original="#000000" />
+                  <path fill="#fff" d="m680.617 557.98 262.632-305.288h-62.235L652.97 517.77 470.833 252.692H260.759l275.427 400.844-275.427 320.142h62.239l240.82-279.931 192.35 279.931h210.074L680.601 557.98zM345.423 299.545h95.595l440.024 629.411h-95.595z" data-original="#ffffff" />
+                </svg>
+              </a>
+            </li>
+          </ul>
         </div>
+
+        <div className="max-lg:min-w-[140px]">
+          <h4 className="text-slate-900 font-semibold text-sm relative max-sm:cursor-pointer">Links úteis</h4>
+
+          <ul className="mt-6 space-y-4">
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">Sobre nós</a>
+            </li>
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">Eventos</a>
+            </li>
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">Blog</a>
+            </li>
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">FAQ</a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="max-lg:min-w-[140px]">
+          <h4 className="text-slate-900 font-semibold text-sm relative max-sm:cursor-pointer">Menu Principal</h4>
+          <ul className="space-y-4 mt-6">
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">Home</a>
+            </li>
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">Depoimentos</a>
+            </li>
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">Nossa missão</a>
+            </li>
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">Política</a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="max-lg:min-w-[140px]">
+          <h4 className="text-slate-900 font-semibold text-sm relative max-sm:cursor-pointer">Nosso Contato</h4>
+
+          <ul className="space-y-4 mt-6">
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">jotanunes@email.com</a>
+            </li>
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">+64 958 248 966</a>
+            </li>
+            <li>
+              <a href='javascript:void(0)' className="hover:text-slate-900 text-slate-600 text-sm font-normal">Redes Sociais</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <hr className="mt-10 mb-6 border-gray-300" />
+
+      <div className="flex flex-wrap max-md:flex-col gap-4">
+        <p className="text-slate-600 text-sm md:mx-auto">Copyright © 2025 | Todos os direitos reservados.</p>
       </div>
     </footer>
   )
 }
 
-export default Footer
+export default Footer;
