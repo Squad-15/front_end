@@ -127,7 +127,7 @@ export const ListUsers = () => {
                             <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
                               <img
                                 className="rounded-full"
-                                src={"https://www.abbviecomvoce.com.br/resource/1569573722000/assets_patient_skyrizi_new/img/avatar.png"}
+                                src={user?.urlPicture ? user.urlPicture : "https://www.abbviecomvoce.com.br/resource/1569573722000/assets_patient_skyrizi_new/img/avatar.png"}
                                 width="40"
                                 height="40"
                                 alt={user.firstName}
