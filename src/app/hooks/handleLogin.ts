@@ -51,8 +51,6 @@ export function useLogin() {
       const decodedToken = jwtDecode(data.token) as DataUser
       const role = decodedToken.roleUser;
 
-      console.log(role)
-
     if (!role) {
       throw new Error('Função do usuário não encontrada no token.')
     }
