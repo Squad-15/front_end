@@ -30,7 +30,7 @@ const ManageCourses = ({ isCursosOpen, setIsCursosOpen }: ManageCoursesProps) =>
 
       <ul className={`sub menu overflow-hidden transition-[max-height] duration-500 ease-in-out ml-8 ${isCursosOpen ? "max-h-[500px]" : "max-h-0"}`}>
         <li>
-          <a href="#" className="text-slate-800 text-[15px] font-medium block cursor-pointer hover:bg-gray-100 rounded-md px-3 py-2 transition-all duration-300">
+          <a href="/manage-courses" className="text-slate-800 text-[15px] font-medium block cursor-pointer hover:bg-gray-100 rounded-md px-3 py-2 transition-all duration-300">
             <span>Gerenciar cursos</span>
           </a>
         </li>
