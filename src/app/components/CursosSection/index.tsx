@@ -46,14 +46,7 @@ export const CursosSection = () => {
             key={index}
             className="bg-black rounded-2xl overflow-hidden shadow-lg flex flex-col justify-between"
           >
-            <div className="h-48 md:h-56 w-full relative">
-              {/* <Image
-                src={curso.imagem}
-                alt={curso.titulo}
-                fill
-                className="object-cover"
-              /> */}
-
+            <div className="h-48 md:h-56 w-full relative">          
               <img
                 src={curso.imagem}
                 alt="Joana Costa"

@@ -1,7 +1,14 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-}
+  reactStrictMode: true,
+  images: {
+    domains: [
+      'media.istockphoto.com',
+      'img.freepik.com',
+      'img.youtube.com',
+    ],
+  },
+};
 
-export default nextConfig
+export default nextConfig;
