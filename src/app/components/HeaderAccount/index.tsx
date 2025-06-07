@@ -1,6 +1,61 @@
+"use client";
 import { LinksHeaderAccount } from "../LinksHeaderAccount";
+import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+
+export interface UserProfile {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  photoUrl?: string;
+}
 
 export const HeaderAccount = () => {
+
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  function getCookie(name: string): string | null {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? decodeURIComponent(match[2]) : null;
+  }
+
+  useEffect(() => {
+    async function fetchUser() {
+      const token = getCookie("token");
+      if (!token) return;
+
+      try {
+        interface JwtPayload {
+          id: number;
+          [key: string]: unknown;
+        }
+        const decoded = jwtDecode<JwtPayload>(token);
+        const userId = decoded.id;
+
+        const response = await fetch(`http://localhost:8080/users/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUser(data);
+        } else {
+          console.error("Erro na requisição:", response.status);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar usuário:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchUser();
+  }, []);
+
     return (
         <section className="main-content w-full ml-0 md:ml-20 px-6">
           <header className="z-0 sticky top-0 pt-4">
@@ -42,10 +97,17 @@ export const HeaderAccount = () => {
                   </div>
 
                   <div className="dropdown-menu relative flex shrink-0 group">
-                    <img src="https://readymadeui.com/team-1.webp" alt="profile-pic"
-                      className="w-9 h-9 rounded-full border-2 border-gray-300 cursor-pointer" />
+                    {/* <img src="https://readymadeui.com/team-1.webp" alt="profile-pic"
+                      className="w-9 h-9 rounded-full border-2 border-gray-300 cursor-pointer" /> */}
 
-                    <LinksHeaderAccount />
+                      <img
+                        src={user?.photoUrl || "assets/img/default_profile.png"}
+                        alt="profile-pic"
+                        className="w-9 h-9 rounded-full cursor-pointer"
+                      />
+
+                    {/* <LinksHeaderAccount /> */}
+                    <LinksHeaderAccount user={user} loading={loading} />
                   </div>
                 </div>
               </div>
