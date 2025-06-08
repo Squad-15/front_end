@@ -1,3 +1,5 @@
+"use client";
+
 export const CardProgressUser = () => {
     return (
         <div className="grid grid-cols-1 gap-4 px-4 mt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:px-8">
