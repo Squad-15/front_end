@@ -1,13 +1,8 @@
 import VideoSection from "@/app/components/VideoSection";
 
-interface VideoPageProps {
-  params: {
-    videoId: string;
-  };
-}
+export default async function VideoPage(props: { params: Promise<{ videoId: string }> }) {
+  const { videoId } = await props.params;
 
-export default function VideoPage({ params }: VideoPageProps) {
-  const { videoId } = params;
   const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
   return (
