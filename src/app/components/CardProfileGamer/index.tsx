@@ -1,7 +1,6 @@
 "use client";
 import { jwtDecode } from "jwt-decode";
 
-// types
 interface JwtPayload {
   sub: string;
   userId: number;
