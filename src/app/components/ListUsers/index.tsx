@@ -15,6 +15,7 @@ interface User {
   roleUser: string;
   email: string;
   role: string;
+  urlPicture?: string;
 }
 
 export const ListUsers = () => {
