@@ -1,18 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { CourseHeader } from "../components/CourseHeader";
-import { CourseList } from "../components/CourseList";
+import  { CourseList } from "../components/CourseList";
 import { useDebounce } from "../hooks/useDebouce";
 
-interface Course {
-  id: number;
-  titulo: string;
-  description: string;
-  url_video: string;
-  url_photo: string;
-  ordem: number;
-  tipo: string;
-}
+import { Course } from "../types/Course";
 
 export default function ManageCourses() {
   const [cursos, setCursos] = useState<Course[]>([]);
@@ -51,7 +43,7 @@ export default function ManageCourses() {
     : true;
 
     const matchesCategory = category
-      ? curso.category?.toLowerCase() === category.toLowerCase()
+      ? curso.categoria?.toLowerCase() === category.toLowerCase()
       : true;
 
     return matchesSearch && matchesType && matchesStatus && matchesCategory;
@@ -64,7 +56,7 @@ export default function ManageCourses() {
         setSearch={setSearch}
         type={type}
         setType={setType}
-        ordem={ordem}
+        ordem={ordem === "" ? 0 : Number(ordem)}
         setOrdem={setOrdem}
         category={category}
         setCategory={setCategory}

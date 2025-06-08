@@ -1,18 +1,5 @@
-import { ReactNode } from "react";
 import { IoEyeOutline, IoCreateOutline, IoTrashOutline, IoLayersOutline } from "react-icons/io5";
-
-interface Course {
-  ordem: ReactNode;
-  description: ReactNode;
-  url_video: string | undefined;
-  id: number;
-  titulo: string;
-  categoria: string;
-  tipo: "Online" | "Presencial" | "Híbrido";
-  descricao: string;
-  status: "Ativo" | "Inativo";
-  url_photo?: string;
-}
+import { Course } from "@/app/types/Course";
 
 export const CourseList = ({ cursos }: { cursos: Course[] }) => {
   return (
@@ -58,3 +45,4 @@ export const CourseList = ({ cursos }: { cursos: Course[] }) => {
     </div>
   );
 };
+
