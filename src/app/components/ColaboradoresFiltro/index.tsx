@@ -74,11 +74,17 @@ export const ColaboradoresFiltro = ({
   }, []);
 
   return (
-    <div className="bg-white p-4 rounded-2xl shadow mb-6 md:ml-96">
-      <h2 className="text-lg font-semibold mb-4 text-gray-800">🔍 Filtros de Busca</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div className="rounded-2xl shadow mb-6 md:ml-96">
+      <div className="bg-white p-4 rounded-2xl shadow mb-6">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold text-gray-800">🔍 Filtros de Busca</h2>
+        <a href="/register" className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-medium transition">
+          + Criar novo
+        </a>
+      </div>
 
-        <input
+  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+     <input
           type="text"
           placeholder="Buscar por nome, e-mail ou matrícula"
           value={search}
@@ -147,7 +153,8 @@ export const ColaboradoresFiltro = ({
           onChange={(e) => setDateAdmission(e.target.value)}
           className="border border-gray-300 rounded-xl px-4 py-2 text-sm w-full"
         />
-      </div>
+  </div>
+</div>
     </div>
   );
 };

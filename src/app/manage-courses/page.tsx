@@ -40,7 +40,6 @@ export default function ManageCourses() {
     fetchCursos();
   }, []);
 
-  // Filtragem com base nos campos
   const filteredCursos = cursos.filter((curso) => {
     const matchesSearch =
     curso.titulo.toLowerCase().includes(debouncedSearch.toLowerCase());

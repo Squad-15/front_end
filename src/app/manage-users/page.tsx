@@ -31,8 +31,6 @@ export default function ManageUsers() {
             setDateAdmission={setDateAdmission}
         />
 
-        {/* <ListaColaboradores/>; */}
-
         <ListaColaboradores
             search={search}
             cargo={cargo}
