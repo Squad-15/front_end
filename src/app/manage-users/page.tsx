@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ColaboradoresFiltro } from "../components/ColaboradoresFiltro";
+import { ListaColaboradores } from "../components/ListaColaboradores";
 
 export default function ManageUsers() {
     const [search, setSearch] = useState("");
@@ -23,6 +24,8 @@ export default function ManageUsers() {
             dataFim={dataFim}
             setDataFim={setDataFim}
         />
+
+        <ListaColaboradores/>;
     </div>
     )
 }
