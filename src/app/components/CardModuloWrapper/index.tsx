@@ -5,6 +5,7 @@ import "/public/styles/modulo.css";
 import { useRouter } from 'next/navigation'
 
 type Modulo = {
+  urlVideo: string;
   id: number;
   order: number;
   title: string;
@@ -42,11 +43,15 @@ const CardModuloWrapper: React.FC<CardModuloWrapperProps> = ({
       try {
         const res = await fetch(`http://localhost:8080/modulos/${moduloSelecionado}/documentos`)
         if (!res.ok) throw new Error('Erro ao buscar módulos')
-        const data = await res.json()
+        const data = await res.json() as Modulo[];
         console.log(data)
         setModulos(data);
-      } catch (err: any) {
-        setError(err.message || 'Erro desconhecido')
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message)
+        } else {
+          setError('Erro desconhecido')
+        }
       } finally {
         setLoading(false)
       }
