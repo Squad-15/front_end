@@ -1,10 +1,11 @@
+"use client";
 import { CardGamerRanking } from "../components/CardGamerRanking";
 import { CardProfileGamer } from "../components/CardProfileGamer";
 import { CardProgressUser } from "../components/CardProgressUser";
 import { LogoutButton } from "../components/LogoutButton";
 import "/public/styles/profile.css";
 
-export default function AboutPage() {
+export default function ProfilePage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 px-6 py-10 text-gray-900">
             <header className="flex justify-between items-center mb-12">
