@@ -30,7 +30,8 @@ const CardModuloWrapper: React.FC<CardModuloWrapperProps> = ({
   const router = useRouter();
 
   const handleAssistirAgora = (modulo: Modulo) => {
-    router.push(`/video?urlVideo=${encodeURIComponent(modulo.urlVideo)}`);
+    const videoId = modulo.urlVideo.split('v=')[1];
+    router.push(`/video/${videoId}`);
   };
 
   useEffect(() => {
