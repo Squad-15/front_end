@@ -1,3 +1,4 @@
+"use client";
 import { StepPath } from "../components/StepPath";
 
 export default function PagePath() {
