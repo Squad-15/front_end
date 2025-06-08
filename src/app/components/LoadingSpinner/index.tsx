@@ -1,3 +1,4 @@
+"use client";
 export const LoadingSpinner = () => {
     return(
       <svg xmlns="http://www.w3.org/2000/svg" className="spinner-7 w-14 h-14 shrink-0 animate-spin" viewBox="0 0 512 512">

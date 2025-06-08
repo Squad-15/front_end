@@ -1,3 +1,4 @@
+"use client";
 import { CardBenefit } from "../CardBenefit";
 
 export const SectionBenefits = () => {

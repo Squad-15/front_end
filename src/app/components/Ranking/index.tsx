@@ -1,3 +1,4 @@
+"use client";
 export const Ranking = () => {
     return(
     <div className="container font-poppins">

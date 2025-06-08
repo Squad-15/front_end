@@ -1,3 +1,4 @@
+"use client";
 export default function LocationPage() {
     return (
         <div className="text-center">

@@ -1,3 +1,4 @@
+"use client";
 import { CardsAbout } from "../CardsAbout";
 
 export const HeroPrinciple = () => {

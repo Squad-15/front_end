@@ -1,3 +1,4 @@
+"use client";
 interface ManageCoursesProps {
   isCursosOpen: boolean;
   setIsCursosOpen: (value: boolean) => void;

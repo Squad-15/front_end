@@ -1,3 +1,4 @@
+"use client";
 interface ManageCoursesProps {
     isDashboardOpen: boolean;
     setIsDashboardOpen: (open: boolean) => void;

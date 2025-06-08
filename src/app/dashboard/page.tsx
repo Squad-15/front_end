@@ -1,3 +1,4 @@
+"use client";
 import { InformationsAboutPlataform } from "../components/InformationsAboutPlataform";
 import { ListCourses } from "../components/ListCourses";
 import { ListTracks } from "../components/ListTracks";

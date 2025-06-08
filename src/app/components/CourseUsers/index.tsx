@@ -1,3 +1,4 @@
+"use client";
 import { IoPersonRemoveOutline, IoPersonAddOutline } from "react-icons/io5";
 
 interface User {

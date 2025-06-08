@@ -1,3 +1,4 @@
+"use client";
 export default function ManageModulo() {
     return(
         <div className="md:ml-96">

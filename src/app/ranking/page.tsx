@@ -1,3 +1,4 @@
+"use client";
 import "/public/styles/ranking.css";
 import { Ranking } from "../components/Ranking";
 

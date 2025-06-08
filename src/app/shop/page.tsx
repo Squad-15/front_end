@@ -1,3 +1,4 @@
+"use client";
 import GamifiedStore from "../components/GamifiedStore";
 
 export default function PageShopping() {

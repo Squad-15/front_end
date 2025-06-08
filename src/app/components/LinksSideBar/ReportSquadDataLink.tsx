@@ -1,3 +1,4 @@
+"use client";
 interface ReportSquadDataLinkProps {
     isReportSquadOpen: boolean;
     setIsReportSquadOpen: (value: boolean) => void;

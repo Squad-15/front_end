@@ -1,3 +1,4 @@
+"use client";
 interface ReportDatasLinkProps {
     isReportOpen: boolean;
     setIsReportOpen: (isOpen: boolean) => void;

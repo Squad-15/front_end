@@ -1,3 +1,4 @@
+"use client";
 interface ManageContributorsProps {
   isColaboradoresOpen: boolean;
   setIsColaboradoresOpen: (value: boolean) => void;

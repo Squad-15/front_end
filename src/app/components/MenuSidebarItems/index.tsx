@@ -1,3 +1,4 @@
+"use client";
 import { LinksMenu } from '../LinksMenu';
 interface MenuSidebarItemsProps {
   isOpen: boolean;

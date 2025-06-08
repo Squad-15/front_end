@@ -1,3 +1,4 @@
+"use client";
 import VideoSection from "@/app/components/VideoSection";
 
 export default async function VideoPage(props: { params: Promise<{ videoId: string }> }) {

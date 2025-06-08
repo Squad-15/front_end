@@ -1,3 +1,4 @@
+"use client";
 export const SectionAbout = () => {
     return(
         <section className="bg-gray-50 rounded-3xl p-8 md:p-16 text-black relative max-w-[1200px] mx-auto flex flex-col items-center justify-center mt-10 mb-10">

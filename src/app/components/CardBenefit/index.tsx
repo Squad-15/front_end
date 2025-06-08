@@ -1,3 +1,4 @@
+"use client";
 type CardBenefitProps = {
     icon: string;
     title: string;

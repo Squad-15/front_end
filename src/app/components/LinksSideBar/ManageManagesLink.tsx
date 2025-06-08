@@ -1,3 +1,4 @@
+"use client";
 interface ManageLinkProps {
   isGestoresOpen: boolean;
   setIsGestoresOpen: (value: boolean) => void;

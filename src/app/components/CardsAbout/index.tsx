@@ -1,3 +1,4 @@
+"use client";
 export const CardsAbout = () => {
     return (
         <div>

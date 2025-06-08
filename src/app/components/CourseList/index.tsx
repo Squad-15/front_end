@@ -1,3 +1,4 @@
+"use client";
 import { IoEyeOutline, IoCreateOutline, IoTrashOutline, IoLayersOutline } from "react-icons/io5";
 import { Course } from "@/app/types/Course";
 

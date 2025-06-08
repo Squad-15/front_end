@@ -1,3 +1,4 @@
+"use client";
 interface StepOneProps {
     formData: { firstName: string; lastName: string; email: string; phone: string };
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void

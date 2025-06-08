@@ -1,3 +1,4 @@
+"use client";
 import { AssetsMenu } from "../AssetsMenu";
 import { useState } from "react";
 import ManageCourses from "../LinksSideBar/ManageCoursesLink";

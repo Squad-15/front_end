@@ -1,3 +1,4 @@
+"use client";
 export const SectionAccessAnywhere = () => {
     return(
         <div className="bg-white dark:bg-gray-800 flex relative z-20 items-center overflow-hidden">
