@@ -32,41 +32,39 @@ import { LoadingSpinner } from "../LoadingSpinner";
 export const CardProfileGamer = () => {
   const [user, setUser] = useState<UserAccount | null>(null);
 
+useEffect(() => {
   function getCookie(name: string): string | null {
+    if (typeof document === "undefined") return null;
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? decodeURIComponent(match[2]) : null;
-}
+  }
 
-useEffect(() => {
     async function fetchUser() {
       const token = getCookie("token");
       if (!token) return;
+        try {
+          const decoded = jwtDecode<JwtPayload>(token);
+          const userId = decoded.id;
 
-      try {
-        // Decodifica o token para pegar o ID
-        const decoded = jwtDecode<JwtPayload>(token);
-        const userId = decoded.id;
+          const response = await fetch(`http://localhost:8080/users/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
 
-        const response = await fetch(`http://localhost:8080/users/${userId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data);
-        } else {
-          console.error("Erro na requisição:", response.status);
+          if (response.ok) {
+            const data = await response.json();
+            setUser(data);
+          } else {
+            console.error("Erro na requisição:", response.status);
+          }
+        } catch (error) {
+          console.error("Erro ao buscar usuário:", error);
         }
-      } catch (error) {
-        console.error("Erro ao buscar usuário:", error);
-      }
     }
 
     fetchUser();
   }, []);
-
       function formatProfileName(text: string) {
       if (!text) return "";
 

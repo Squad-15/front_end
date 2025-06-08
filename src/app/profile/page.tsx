@@ -7,7 +7,6 @@ import "/public/styles/profile.css";
 export default function AboutPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 px-6 py-10 text-gray-900">
-            {/* Cabeçalho */}
             <header className="flex justify-between items-center mb-12">
                 <h1 className="text-4xl font-extrabold tracking-tight">Meu Perfil</h1>
 
@@ -32,18 +31,15 @@ export default function AboutPage() {
                 </div>
             </header>
 
-            {/* Seção de Cartões do Perfil e Ranking */}
             <section className="flex flex-wrap gap-8 justify-center mb-12">
                 <CardProfileGamer />
                 <CardGamerRanking />
             </section>
 
-            {/* Barra de progresso do usuário */}
             <section className="mb-12">
                 <CardProgressUser />
             </section>
 
-            {/* Conquistas Recentes */}
             <section className="mb-12">
                 <h2 className="text-2xl font-bold mb-6">Conquistas Recentes</h2>
                 <div className="flex gap-6 overflow-x-auto pb-2">
@@ -60,7 +56,6 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Atividades Recentes */}
             <section>
                 <h2 className="text-2xl font-bold mb-6">Atividades Recentes</h2>
                 <ul className="space-y-4">
