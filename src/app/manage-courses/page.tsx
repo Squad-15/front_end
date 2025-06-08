@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { CourseHeader } from "../components/CourseHeader";
 import { CourseList } from "../components/CourseList";
-import { useDebounce } from "../hooks/usedebouce";
+import { useDebounce } from "../hooks/useDebouce";
 
 interface Course {
   id: number;

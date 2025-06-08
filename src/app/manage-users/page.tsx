@@ -6,9 +6,11 @@ import { ListaColaboradores } from "../components/ListaColaboradores";
 export default function ManageUsers() {
     const [search, setSearch] = useState("");
     const [cargo, setCargo] = useState("");
-    const [status, setStatus] = useState("");
-    const [dataInicio, setDataInicio] = useState("");
-    const [dataFim, setDataFim] = useState("");
+    const [departament, setDepartament] = useState("");
+    const [location, setLocation] = useState("");
+    const [vinculo, setVinculo] = useState("");
+    const [role, setRole] = useState("");
+    const [dateAdmission, setDateAdmission] = useState("");
     
     return(
         <div>
@@ -17,15 +19,30 @@ export default function ManageUsers() {
             setSearch={setSearch}
             cargo={cargo}
             setCargo={setCargo}
-            status={status}
-            setStatus={setStatus}
-            dataInicio={dataInicio}
-            setDataInicio={setDataInicio}
-            dataFim={dataFim}
-            setDataFim={setDataFim}
+            departament={departament}
+            setDepartament={setDepartament}
+            location={location}
+            setLocation={setLocation}
+            vinculo={vinculo}
+            setVinculo={setVinculo}
+            role={role}
+            setRole={setRole}
+            dateAdmission={dateAdmission}
+            setDateAdmission={setDateAdmission}
         />
 
-        <ListaColaboradores/>;
+        {/* <ListaColaboradores/>; */}
+
+        <ListaColaboradores
+            search={search}
+            cargo={cargo}
+            departament={departament}
+            vinculo={vinculo}
+            location={location}
+            role={role}
+            dateAdmission={dateAdmission}
+        />
+
     </div>
     )
 }
