@@ -20,6 +20,7 @@ export const useFormRegister = () => {
     typeconnection: '',
     location: '',
     dataAdmissao: '',
+    nivelPermissao: ''
   })
 
   const resetForm = () => {
@@ -34,6 +35,7 @@ export const useFormRegister = () => {
       typeconnection: '',
       location: '',
       dataAdmissao: '',
+      nivelPermissao: ''
     })
     setStep(1)
   }

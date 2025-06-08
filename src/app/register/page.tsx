@@ -1,5 +1,4 @@
 import { FormRegister } from "../components/FormRegister";
-// import backgroundImage from "/assets/img/10101411.jpg";
 
 
 const Register = () => {

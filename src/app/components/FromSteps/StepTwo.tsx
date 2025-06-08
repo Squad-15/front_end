@@ -1,13 +1,14 @@
 import React from "react";
 
 type StepTwoProps = {
+
   formData: {
     cargo: string;
     departamento: string;
-    profile: string;
     typeconnection: string;
     dataAdmissao: string;
   };
+
   handleChange: (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
   departaments: { value: string; label: string }[];
   profile: { value: string; label: string }[];
