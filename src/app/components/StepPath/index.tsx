@@ -5,12 +5,24 @@ import { useEffect, useState } from 'react';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { LoadingSpinner } from '../LoadingSpinner';
 
+interface MyJwtPayload extends JwtPayload {
+  id: string;
+}
+
+
 export const StepPath = () => {
 
   const [idUser, setIdUser] = useState<string | null>(null);
   const [userCategoryId, setUserCategoryId] = useState<string | null>(null);
   const [pathUserId, setPathUserId] = useState<string | null>(null);
-  const [modulos, setModulos] = useState<any[]>([]);
+  interface Modulo {
+    id: string;
+    nameTrilha?: string;
+    nomeModulo?: string;
+    status?: string;
+  }
+
+  const [modulos, setModulos] = useState<Modulo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
 
@@ -25,7 +37,7 @@ export const StepPath = () => {
         if (!token) return;
   
         try {
-          const decoded = jwtDecode<JwtPayload>(token);
+          const decoded = jwtDecode<MyJwtPayload>(token);
           const userId = decoded.id;
   
           const response = await fetch(`http://localhost:8080/users/${userId}`, {

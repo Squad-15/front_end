@@ -9,13 +9,19 @@ type HeaderScreenStepProps = {
 };
 
 export const StepModulos: React.FC<HeaderScreenStepProps> = ({
-  etapaConcluida,
+  // etapaConcluida,
   onSelecionarModulo,
 }) => {
   const [userId, setUserId] = useState<string | null>(null);
   const [userCategoryId, setUserCategoryId] = useState<string | null>(null);
   const [pathUserId, setPathUserId] = useState<string | null>(null);
-  const [modulos, setModulos] = useState<any[]>([]);
+  type Modulo = {
+    id: number;
+    idModulo: number;
+    nomeModulo: string;
+  };
+
+  const [modulos, setModulos] = useState<Modulo[]>([]);
   const [moduloSelecionado, setModuloSelecionado] = useState<number | null>(null); // 🔸
   const [isLoading, setIsLoading] = useState(true);
 
