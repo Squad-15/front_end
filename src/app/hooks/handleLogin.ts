@@ -59,11 +59,13 @@ export function useLogin() {
     setUser(data)
     setIsRedirecting(true)
 
+  if (typeof window !== 'undefined') {
     if (role === 'ADMINISTRADOR' || role === 'GESTOR') {
-      window.location.href = '/dashboard'
+      window.location.href = '/dashboard';
     } else {
-      window.location.href = '/modulo'
+      window.location.href = '/modulo';
     }
+  }
 
       setUser(data)
       setIsRedirecting(true);

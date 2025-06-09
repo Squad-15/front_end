@@ -19,6 +19,7 @@ export default function HomeClient() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    if (typeof window === 'undefined') return;
     if (params.get("sessionExpired")) {
       toast.error("Sua sessão expirou. Por favor, faça login novamente.");
       console.log("Sessão expirada.");
