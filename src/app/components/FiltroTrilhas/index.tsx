@@ -40,7 +40,7 @@ export default function FiltroTrilhas({
       <div className="w-full">
         <input
           type="text"
-          placeholder="Pesquisar por título de trilha..."
+          placeholder="Pesquisar por título, descrição ou categoria da trilha..."
           className="w-full px-4 py-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => onChangeBusca(e.target.value)}
         />
