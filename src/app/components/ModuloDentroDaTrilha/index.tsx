@@ -196,8 +196,12 @@ export default function ListaTrilhas() {
         );
 
         setTrilhas(trilhasComModulos);
-      } catch (error: any) {
-        setErro(error.message || "Erro desconhecido");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setErro(error.message);
+        } else {
+          setErro("Erro desconhecido");
+        }
       } finally {
         setCarregando(false);
       }
