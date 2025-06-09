@@ -48,7 +48,7 @@ export const ListCourses = () => {
           <div className="flex gap-2">         
             <a href="/manage-courses" className="flex items-center gap-2 bg-[#60A5FA] hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition">
               <IoBookOutline size={20} />
-              <span className="font-medium">Gerenciar Cursos</span>
+              <span className="font-medium">Gerenciar Materiais</span>
             </a>
           </div>
           </header>
