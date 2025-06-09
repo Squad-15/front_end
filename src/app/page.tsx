@@ -13,6 +13,7 @@ import { SectionAccessAnywhere } from "./components/SectionAccessAnywhere";
 import DepoimentoSection from "./components/DepoimentoSection";
 import ContatoSection from "./components/ContatoSection";
 import Footer from "./components/footer";
+import BackToTop from "./components/BackToTop";
 
 export default function HomeClient() {
   const router = useRouter();
@@ -41,6 +42,7 @@ export default function HomeClient() {
       <DepoimentoSection />
       <ContatoSection />
       <Footer />
+      <BackToTop />
     </>
   );
 }
