@@ -7,6 +7,7 @@ export const LogoutButton = () => {
   const router = useRouter();
 
   function deleteCookie(name: string) {
+    if (typeof document === 'undefined') return null;
     document.cookie = `${name}=; Max-Age=0; path=/;`;
   }
 
