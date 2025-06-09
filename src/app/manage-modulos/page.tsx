@@ -10,12 +10,7 @@ export default function ModulosPage() {
       <CabecalhoTrilhasModulos />
       <FiltroTrilhasModulos />
       {/* <ListaTrilhas /> */}
-      <ModuloDentroDaTrilha
-        ordem={1}
-        titulo="Fundamentos do React"
-        status="ativo"
-        quantidadeMateriais={10}
-    />
+      <ModuloDentroDaTrilha/>
 
     </div>
   );
