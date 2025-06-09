@@ -97,10 +97,10 @@ export const ListUsers = () => {
                 <IoPersonAddOutline size={20} />
                 <span className="font-medium">Cadastrar Novo</span>
               </Link>
-              <button className="flex items-center gap-2 bg-[#60A5FA] hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition">
+              <a href="/manage-users" className="flex items-center gap-2 bg-[#60A5FA] hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition">
                 <IoPeopleOutline size={20} />
                 <span className="font-medium">Ver Todos</span>
-              </button>
+              </a>
             </div>
           </header>
 
