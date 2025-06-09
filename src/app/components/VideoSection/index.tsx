@@ -67,7 +67,6 @@ const VideoSection: React.FC<VideoSectionProps> = ({ youtubeUrl }) => {
 
   useEffect(() => {
     if (!videoId) return;
-
     const existingScript = document.getElementById('youtube-api');
 
     const createPlayer = () => {

@@ -6,8 +6,7 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 
-import { UserProfile } from "../HeaderAccount"; // ajuste se o caminho for diferente
-
+import { UserProfile } from "../HeaderAccount";
 interface LinksHeaderAccountProps {
   user: UserProfile | null;
   loading: boolean;
