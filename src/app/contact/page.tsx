@@ -1,11 +1,11 @@
 'use client'
-import Footer from "../components/footer"
+import Footer from '../components/footer'
 export default function ContactPage() {
   return (
     <div className="text-left">
       <div className="flex min-h-screen items-center justify-start bg-white font-poppins">
         <div className="mx-auto w-full max-w-lg">
-          <h1 className="text-4xl font-medium">Contate-nos</h1>
+          <h1 className="flex-1 text-4xl font-medium">Contate-nos</h1>
           <p className="mt-3">
             Envie um e-mail para help@Jnunes.com ou envie-nos uma mensagem aqui:
           </p>
@@ -57,7 +57,7 @@ export default function ContactPage() {
                   placeholder=" "
                 ></textarea>
                 <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-red-600">
-                  Digite uma mensagem: 
+                  Digite uma mensagem:
                 </label>
               </div>
             </div>
