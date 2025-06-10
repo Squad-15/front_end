@@ -9,7 +9,7 @@ interface ModalEditUserProps {
 interface UserData {
   firstName: string;
   lastName: string;
-  title: string;
+  title?: string;
   cargo: string;
   departament: string;
   email: string;
@@ -18,10 +18,10 @@ interface UserData {
   roleUser: string;
   phone: string;
   location: string;
+  urlPicture?: string;
 }
 
 export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
-  console.log(userId);
   const [userData, setUserData] = useState<UserData>({
     firstName: "",
     lastName: "",
@@ -33,17 +33,35 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
     typeVinculo: "",
     roleUser: "",
     phone: "",
-    location: ""
+    location: "",
   });
+
 
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}`)
       .then((res) => res.json())
-      .then((data) => setUserData(data))
+      .then((data) => {
+        setUserData({
+          firstName: data.firstName ?? "",
+          lastName: data.lastName ?? "",
+          title: data.title ?? "",
+          cargo: data.profile?.profileName ?? "",
+          departament: data.profile?.department ?? "",
+          email: data.email ?? "",
+          dataAdmissao: data.profile?.dateAdmission ?? "",
+          typeVinculo: data.profile?.typeConnection ?? "",
+          roleUser: data.roleUser ?? "",
+          phone: data.phone ?? "",
+          location: data.location ?? "",
+          urlPicture: data.urlPicture ?? "",
+        });
+      })
       .catch((error) => console.error("Erro ao buscar dados do usuário:", error));
   }, [userId]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { id, value } = e.target;
     setUserData((prevState) => ({
       ...prevState,
@@ -56,6 +74,39 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
     console.log("Dados atualizados:", userData);
   };
 
+  const [cargosOptions, setCargosOptions] = useState<string[]>([]);
+  const [departamentosOptions, setDepartamentosOptions] = useState<string[]>([]);
+  const [vinculosOptions, setVinculosOptions] = useState<string[]>([]);
+  const [locationsOptions, setLocationsOptions] = useState<string[]>([]);
+  const [roleOptions, setRoleOptions] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/metadata/profiles")
+      .then((res) => res.json())
+      .then((data) => setCargosOptions(data))
+      .catch(console.error);
+
+    fetch("http://localhost:8080/metadata/departaments")
+      .then((res) => res.json())
+      .then((data) => setDepartamentosOptions(data))
+      .catch(console.error);
+
+    fetch("http://localhost:8080/metadata/typeconnection")
+      .then((res) => res.json())
+      .then((data) => setVinculosOptions(data))
+      .catch(console.error);
+
+    fetch("http://localhost:8080/metadata/location")
+      .then((res) => res.json())
+      .then((data) => setLocationsOptions(data))
+      .catch(console.error);
+
+    fetch("http://localhost:8080/metadata/roleuser")
+      .then((res) => res.json())
+      .then((data) => setRoleOptions(data))
+      .catch(console.error);
+  }, []);
+
   return (
     <div className="font-inter mb-10 w-full rounded-2xl bg-white p-10 font-normal leading-relaxed text-gray-900 shadow-xl relative">
       <div className="flex flex-col">
@@ -64,12 +115,12 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
           <div className="text-center">
             <div>
               <img
-                src="https://i.pravatar.cc/300"
+               src={userData.urlPicture || "assets/img/default_profile.png"}
                 alt="Profile Picture"
                 className="rounded-full w-32 h-32 mx-auto border-4 border-indigo-800 mb-4 transition-transform duration-300 hover:scale-105 ring ring-gray-300"
               />
               <input type="file" name="profile" id="upload_profile" hidden />
-              <label htmlFor="upload_profile" className="inline-flex items-center">
+              <label htmlFor="upload_profile" className="inline-flex items-center cursor-pointer">
                 <svg
                   className="w-5 h-5 text-blue-700"
                   fill="none"
@@ -86,7 +137,7 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
                 </svg>
               </label>
             </div>
-            <button className="bg-indigo-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300 ring ring-gray-300 hover:ring-indigo-300">
+            <button className="bg-indigo-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300 ring ring-gray-300 hover:ring-indigo-300 mt-2">
               Atualizar Foto de Perfil
             </button>
           </div>
@@ -95,7 +146,9 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex space-x-4">
             <div className="w-1/2">
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">Nome</label>
+              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                Nome
+              </label>
               <input
                 type="text"
                 id="firstName"
@@ -105,7 +158,9 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
               />
             </div>
             <div className="w-1/2">
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Sobrenome</label>
+              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                Sobrenome
+              </label>
               <input
                 type="text"
                 id="lastName"
@@ -116,43 +171,50 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
             </div>
           </div>
 
-          <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700">Matrícula</label>
-            <input
-              type="text"
-              id="title"
-              value={userData.title}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md"
-            />
-          </div>
-
           <div className="flex space-x-4">
-            <div className="w-1/2">
-              <label htmlFor="cargo" className="block text-sm font-medium text-gray-700">Cargo</label>
-              <input
-                type="text"
-                id="cargo"
+              <div className="w-1/2">
+              <label htmlFor="roleUser" className="block text-sm font-medium text-gray-700">
+                Cargo
+              </label>
+              <select
+                id="Cargo"
                 value={userData.cargo}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
-              />
+              >
+                <option value="">Selecione o cargo</option>
+                {cargosOptions.map((cargo) => (
+                  <option key={cargo.value} value={cargo.value}>
+                    {cargo.label}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="w-1/2">
-              <label htmlFor="departament" className="block text-sm font-medium text-gray-700">Departamento</label>
-              <input
-                type="text"
-                id="departament"
+              <label htmlFor="roleUser" className="block text-sm font-medium text-gray-700">
+                Departamento
+              </label>
+              <select
+                id="Departamento"
                 value={userData.departament}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
-              />
+              >
+                <option value="">Selecione o departamento</option>
+                {departamentosOptions.map((departament) => (
+                  <option key={departament.value} value={departament.value}>
+                    {departament.label}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -163,7 +225,9 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
           </div>
 
           <div>
-            <label htmlFor="dataAdmissao" className="block text-sm font-medium text-gray-700">Data de Admissão</label>
+            <label htmlFor="dataAdmissao" className="block text-sm font-medium text-gray-700">
+              Data de Admissão
+            </label>
             <input
               type="date"
               id="dataAdmissao"
@@ -175,36 +239,49 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
 
           <div className="flex space-x-4">
             <div className="w-1/2">
-              <label htmlFor="typeVinculo" className="block text-sm font-medium text-gray-700">Tipo de vínculo</label>
+              <label htmlFor="roleUser" className="block text-sm font-medium text-gray-700">
+                Tipo de Vínculo
+              </label>
               <select
-                id="typeVinculo"
+                id="Vinculo"
                 value={userData.typeVinculo}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
               >
-                <option value="clt">CLT</option>
-                <option value="pj">PJ</option>
-                <option value="temporario">Temporário</option>
-                <option value="estagio">Estágio</option>
+                <option value="">Selecione um tipo de vínculo</option>
+                {vinculosOptions.map((vinculo) => (
+                  <option key={vinculo.value} value={vinculo.value}>
+                    {vinculo.label}
+                  </option>
+                ))}
               </select>
             </div>
+            
             <div className="w-1/2">
-              <label htmlFor="roleUser" className="block text-sm font-medium text-gray-700">Nível de Permissão</label>
+              <label htmlFor="roleUser" className="block text-sm font-medium text-gray-700">
+                Nível de Permissão
+              </label>
               <select
                 id="roleUser"
                 value={userData.roleUser}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
               >
-                <option value="admin">Administrador</option>
-                <option value="colaborador">Colaborador</option>
-                <option value="gestor">Gestor</option>
+                <option value="">Selecione um nível</option>
+                {roleOptions.map((role) => (
+                  <option key={role.value} value={role.value}>
+                    {role.label}
+                  </option>
+                ))}
               </select>
             </div>
+
           </div>
 
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Telefone</label>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+              Telefone
+            </label>
             <input
               type="tel"
               id="phone"
@@ -215,19 +292,24 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
           </div>
 
           <div>
-            <label htmlFor="location" className="block text-sm font-medium text-gray-700">Localização</label>
-            <select
-              id="location"
-              value={userData.location}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md"
-            >
-              <option value="" disabled>Selecione uma localização</option>
-              <option value="cidade1">Cidade 1</option>
-              <option value="cidade2">Cidade 2</option>
-              <option value="cidade3">Cidade 3</option>
-            </select>
-          </div>
+              <label htmlFor="roleUser" className="block text-sm font-medium text-gray-700">
+                Localização
+              </label>
+              <select
+                id="location"
+                value={userData.location}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              >
+                <option value="">Selecione uma localização</option>
+                {locationsOptions.map((location) => (
+                  <option key={location.value} value={location.value}>
+                    {location.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
 
           <div className="flex justify-end space-x-4 pt-4">
             <button
@@ -249,3 +331,4 @@ export const ModalEditUser = ({ closeModal, userId }: ModalEditUserProps) => {
     </div>
   );
 };
+
