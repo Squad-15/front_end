@@ -2,7 +2,7 @@
 
 Este repositório contém o **frontend** da plataforma de treinamento interno da empresa **Jota Nunes**. O objetivo é fornecer uma interface moderna, intuitiva e responsiva para que colaboradores possam acessar conteúdos de capacitação de forma organizada e eficiente.
 
-## Sobre o Projeto
+## 📖 Sobre o Projeto
 
 Essa plataforma foi criada para facilitar o aprendizado interno em empresas, oferecendo uma experiência acessível, intuitiva e personalizada para cada colaborador.  
 Permite a visualização de módulos, acompanhamento de progresso, navegação rápida e uma interface moderna.
