@@ -51,6 +51,13 @@ O projeto foi desenvolvido com as seguintes tecnologias e ferramentas:
 
 Certifique-se de ter o **Node.js** e o **npm** (ou **yarn**) instalados na sua máquina.
 
+### 1. Clone o Repositório
+```bash
+git clone https://github.com/Squad-15/front_end.git
+```
+
+### 2.Instale as dependências
+
 ```bash
 # Instalar dependências
 npm install
@@ -58,14 +65,14 @@ npm install
 yarn install
 ```
 
-# Rodar o projeto em ambiente de desenvolvimento
+### 3. Rode o projeto em ambiente de desenvolvimento
 ``` bash
 npm run dev
 # ou
 yarn dev
 ```
 
-## 📦 Build para Produção
+### 📦 Build para Produção
 
 ```bash
 npm run build
