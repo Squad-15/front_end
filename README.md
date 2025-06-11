@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Plataforma de Treinamento Interno — Frontend
 
-## Getting Started
+Este repositório contém o **frontend** da plataforma de treinamento interno da empresa **Jota Nunes**. O objetivo é fornecer uma interface moderna, intuitiva e responsiva para que colaboradores possam acessar conteúdos de capacitação de forma organizada e eficiente.
 
-First, run the development server:
+## Sobre o Projeto
+
+Essa plataforma foi criada para facilitar o aprendizado interno em empresas, oferecendo uma experiência acessível, intuitiva e personalizada para cada colaborador.  
+Permite a visualização de módulos, acompanhamento de progresso, navegação rápida e uma interface moderna.
+
+## 📌 Tecnologias Utilizadas
+
+O projeto foi desenvolvido com as seguintes tecnologias e ferramentas:
+
+- **[React](https://reactjs.org/)** — Biblioteca para construção de interfaces de usuário
+- **[Next.js](https://nextjs.org/)** — Framework React para aplicações web otimizadas e com renderização híbrida (SSR/SSG)
+- **[TypeScript](https://www.typescriptlang.org/)** — Superset do JavaScript que adiciona tipagem estática
+- **[Tailwind CSS](https://tailwindcss.com/)** — Framework utilitário para estilização rápida e responsiva
+- **[Heroicons](https://heroicons.com/)** — Conjunto de ícones SVG otimizados para interfaces modernas
+- **[React Icons](https://react-icons.github.io/react-icons/)** — Biblioteca de ícones populares em formato React
+- **[Ionicons](https://ionic.io/ionicons)** — Conjunto de ícones usado com `react-ionicons` para enriquecer a UI
+- **[Bootstrap Icons](https://icons.getbootstrap.com/)** — Ícones oficiais do Bootstrap prontos para uso
+- **[Lottie](https://lottiefiles.com/)** — Animações leves em JSON para interfaces web e mobile, via `@lottiefiles/react-lottie-player` e `@lottiefiles/dotlottie-react`
+- **[JWT Decode](https://github.com/auth0/jwt-decode)** — Decodificação de tokens JWT no lado do cliente
+- **[js-cookie](https://github.com/js-cookie/js-cookie)** — Biblioteca para manipulação de cookies de forma simples em JavaScript
+
+
+## 📁 Estrutura do Projeto
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── components/         # Componentes reutilizáveis da interface
+├── pages/              # Páginas da aplicação (Next.js)
+├── public/             # Arquivos públicos (imagens, fontes, etc.)
+├── styles/             # Estilos globais e configurações do Tailwind
+├── utils/              # Funções utilitárias e helpers
+├── types/              # Tipagens customizadas do TypeScript
+├── .eslintrc.json      # Configuração do ESLint
+├── tailwind.config.js  # Configuração do Tailwind CSS
+└── next.config.js      # Configuração do Next.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧭 Funcionalidades Principais
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- ✅ Acesso a módulos de treinamento e cursos  
+- 🎯 Dashboard personalizado para cada colaborador  
+- 📈 Sistema de progresso individual  
+- 📱 Interface responsiva e acessível  
+- ⚡ Navegação rápida e intuitiva  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 🛠️ Como Rodar o Projeto
 
-To learn more about Next.js, take a look at the following resources:
+Certifique-se de ter o **Node.js** e o **npm** (ou **yarn**) instalados na sua máquina.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Instalar dependências
+npm install
+# ou
+yarn install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Rodar o projeto em ambiente de desenvolvimento
+``` bash
+npm run dev
+# ou
+yarn dev
+```
 
-## Deploy on Vercel
+## 📦 Build para Produção
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+# ou
+yarn build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+---
+
+## 👥 Autores e Colaboradores
+
+Agradecemos a todos que contribuíram para o desenvolvimento deste projeto:
+
+### 🎨 Prototipação
+- **Adrya Kauane**  
+  Responsável pela criação dos protótipos e definição da experiência do usuário (UX/UI).  
+
+### 📚 Documentação e Modelagem de Banco
+- **Austin Manoel**  
+  Estruturação do README, escrita de manuais de uso, organização da documentação técnica  
+  e participação na modelagem do banco de dados.
+
+### 💻 Front-End e Back-End
+- **Icaro Ryan**  
+  Desenvolvimento da interface (front-end), roteamento com Next.js e desenvolvimento da lógica de negócio/API (back-end).
+
+### 💻 Front-End
+- **Marcos Guilherme**  
+  Implementação de telas, estilização com Tailwind CSS e componentes em React.
+
+### 🚀 DevOps / Deploy e Modelagem de Banco
+- **Christopher Edlly**  
+  Configuração e deploy da aplicação em ambiente de produção, além da participação na modelagem do banco de dados.
+
+---
+
+🙏 A todos que colaboraram direta ou indiretamente: **muito obrigado!**
+
+
