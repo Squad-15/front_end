@@ -72,7 +72,12 @@ export const useFormRegister = () => {
       })
 
       if (!response.ok) throw new Error('Erro ao cadastrar usuário')
-      const user = await response.json()
+      const user = await response.json();
+
+      // Parte para conseguir ver a matricula e senha
+      console.log('Matrícula:', user.numberRegister);
+      console.log('Senha:', user.passwordPlain);
+
 
      const emailBody = {
         ownerRef: user.firstName,
