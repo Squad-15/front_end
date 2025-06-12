@@ -94,9 +94,7 @@ export const ListaColaboradores = ({
         fullName.includes(debouncedSearch.toLowerCase()) ||
         user.email.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
         user.numberRegister.includes(debouncedSearch)) &&
-      // (!debouncedCargo || user.profile.profileName === debouncedCargo) &&
       (!debouncedCargo || normalizeString(user.profile.profileName) === normalizeString(debouncedCargo)) &&
-      // (!debouncedDepartament || user.profile.department === debouncedDepartament) &&
       (!debouncedDepartament || normalizeString(user.profile.department) === normalizeString(debouncedDepartament)) &&
       (!debouncedVinculo || user.profile.typeConnection === debouncedVinculo) &&
       (!debouncedLocation || user.profile.location === debouncedLocation) &&
