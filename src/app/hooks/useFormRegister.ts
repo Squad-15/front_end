@@ -120,7 +120,6 @@ export const useFormRegister = () => {
   }
 
   useEffect(() => {
-    // fetch('https://back-end-sz7p.onrender.com/metadata/departaments')
     fetch('https://back-end-sz7p.onrender.com/metadata/departaments')
       .then((res) => res.json())
       .then((data) => setDepartaments(data))
