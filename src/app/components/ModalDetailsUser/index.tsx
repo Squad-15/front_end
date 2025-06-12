@@ -3,6 +3,12 @@
 import { useEffect, useState } from "react";
 import { UserCircleIcon  } from "@heroicons/react/24/outline";
 
+interface UserProfile {
+  department: string;
+  profileName: string;
+  location: string;
+}
+
 interface UserData {
   firstName: string;
   lastName: string;
@@ -12,7 +18,9 @@ interface UserData {
   location: string;
   urlPicture: string;
   numberRegister: string;
+  profile: UserProfile;
 }
+
 
 interface ModalDetailsUserProps {
   closeModalUserDetails: () => void;
@@ -25,7 +33,7 @@ export const ModalDetailsUser = ({ closeModalUserDetails, userId }: ModalDetails
   useEffect(() => {
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/users/${userId}`);
+      const response = await fetch(`https://back-end-sz7p.onrender.com/users/${userId}`);
       console.log("userId recebido:", userId);
       if (!response.ok) throw new Error("Erro ao buscar dados");
 
@@ -41,21 +49,21 @@ export const ModalDetailsUser = ({ closeModalUserDetails, userId }: ModalDetails
   fetchUserData();
 }, [userId]);
 
-  function formatProfileName(text: string) {
-      if (!text) return "";
+ function formatProfileName(text?: string) {
+  if (!text) return "";
 
-      const withSpaces = text.replace(/_/g, " ");
-      const lower = withSpaces.toLowerCase();
+  const withSpaces = text.replace(/_/g, " ");
+  const lower = withSpaces.toLowerCase();
+  const capitalized = lower.replace(/(^|\s|[-])\S/g, (char: string) => char.toUpperCase());
 
-      const capitalized = lower.replace(/(^|\s|[-])\S/g, (char: string) => char.toUpperCase());
+  return capitalized;
+}
 
-      return capitalized;
-    }
+function formatUpeerCase(text?: string) {
+  if (!text) return "";
+  return text.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+}
 
-    function formatUpeerCase(text: string) {
-    if (!text) return "";
-    return text.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
-  }
 
   return (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">

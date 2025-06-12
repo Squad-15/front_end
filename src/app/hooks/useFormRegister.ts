@@ -64,8 +64,8 @@ export const useFormRegister = () => {
     setIsSubmitting(true)
 
     try {
-      // const response = await fetch('https://back-end-sz7p.onrender.com/auth/register', {
-      const response = await fetch('http://localhost:8080/auth/register', {
+      const response = await fetch('https://back-end-sz7p.onrender.com/auth/register', {
+      // const response = await fetch('http://localhost:8080/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -74,28 +74,36 @@ export const useFormRegister = () => {
       if (!response.ok) throw new Error('Erro ao cadastrar usuário')
       const user = await response.json()
 
-      const emailBody = {
+     const emailBody = {
         ownerRef: user.firstName,
         emailFrom: 'jotanunes.corporativo@gmail.com',
         emailTo: user.email,
-        subject: 'Acesso ao Sistema - Criação de Senha',
+        subject: 'Bem-vindo à Plataforma Jota Nunes!',
         text: [
-          `Prezado(a) ${user.firstName},`,
+          `Olá ${user.firstName},`,
           '',
-          `Sua matrícula no sistema é: ${user.numberRegister}`,
+          'Seja muito bem-vindo(a) à Plataforma Jota Nunes!',
           '',
-          'Para acessar a plataforma, por favor, defina sua senha através do link abaixo:',
-          `${'https://sistema.com.br/definir-senha?token=' + (user.token || 'abc123')}`,
+          `Aqui estão seus dados de acesso:`,
+          `📌 Matrícula: ${user.numberRegister}`,
+          `🔑 Senha: ${user.passwordPlain }`,
           '',
-          'Caso tenha qualquer dúvida ou necessite de suporte, estamos à disposição.',
+          'Acesse a plataforma através do link abaixo:',
+          `${'https://jotanunestreinamento.netlify.app/login'}`,
+          '',
+          'Em caso de dúvidas, nossa equipe está à disposição para te ajudar.',
+          '',
+          'Desejamos uma excelente experiência!',
           '',
           'Atenciosamente,',
           'Equipe Jota Nunes',
         ].join('\n'),
-      }
+      };
 
-      // await fetch('https://back-end-sz7p.onrender.com/sending-email', {
-      await fetch('http://localhost:8080/sending-email', {
+
+
+      await fetch('https://back-end-sz7p.onrender.com/sending-email', {
+      // await fetch('http://localhost:8080/sending-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(emailBody),
@@ -113,31 +121,31 @@ export const useFormRegister = () => {
 
   useEffect(() => {
     // fetch('https://back-end-sz7p.onrender.com/metadata/departaments')
-    fetch('http://localhost:8080/metadata/departaments')
+    fetch('https://back-end-sz7p.onrender.com/metadata/departaments')
       .then((res) => res.json())
       .then((data) => setDepartaments(data))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/profiles')
+    fetch('https://back-end-sz7p.onrender.com/metadata/profiles')
       .then((res) => res.json())
       .then((data) => setProfile(data))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/typeconnection')
+    fetch('https://back-end-sz7p.onrender.com/metadata/typeconnection')
       .then((res) => res.json())
       .then((data) => setTypeConnection(data))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/roleuser')
+    fetch('https://back-end-sz7p.onrender.com/metadata/roleuser')
       .then((res) => res.json())
       .then((data) => setRoleUser(data))
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/metadata/location')
+    fetch('https://back-end-sz7p.onrender.com/metadata/location')
       .then((res) => res.json())
       .then((data) => setLocation(data))
   }, [])

@@ -35,7 +35,7 @@ export const ListUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:8080/users/all');
+      const response = await fetch('https://back-end-sz7p.onrender.com/users/all');
       const data = await response.json();
       setUsers(data.slice(0, 10));
     } catch (error) {
